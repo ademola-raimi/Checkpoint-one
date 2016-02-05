@@ -1,38 +1,19 @@
 {
-    "name": ":vendor/:package_name",
-    "type": "library",
-    "description": ":package_description",
-    "keywords": [
-        ":vendor",
-        ":package_name"
-    ],
-    "homepage": "https://github.com/:vendor/:package_name",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": ":author_name",
-            "email": ":author_email",
-            "homepage": ":author_website",
-            "role": "Developer"
-        }
-    ],
     "require": {
-        "php" : "~5.5|~7.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit" : "4.*",
-        "scrutinizer/ocular": "~1.1",
-        "squizlabs/php_codesniffer": "~2.3"
+        "php":          "7.0.2",
+        "phpunit/phpunit": "^5.1"
     },
     "autoload": {
         "psr-4": {
-            ":vendor\\:package_name\\": "src"
-        }
+            "Demo\\UrbanDictionary\\": "src"
+        },
+        "classmap": ["src/"]
     },
     "autoload-dev": {
         "psr-4": {
-            ":vendor\\:package_name\\Test\\": "tests"
-        }
+            "Demo\\Test\\": "tests"
+        },
+        "classmap": ["tests/"]
     },
     "scripts": {
         "test": "phpunit"
