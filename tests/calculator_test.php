@@ -3,7 +3,7 @@
 namespace Demo\Tests;
 
 use PHPUnit_Framework_TestCase;
-use Demo\UrbanDictionary\calculator;
+use Demo\UrbanDictionary\Calculator;
 
 class CalculatorTest extends PHPUnit_Framework_TestCase
 {

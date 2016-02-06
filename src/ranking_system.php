@@ -1,7 +1,6 @@
 <?php
 
 namespace Demo\UrbanDictionary;
-
 class RankWord
 {
     public function rank_word($word)

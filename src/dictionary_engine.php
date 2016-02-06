@@ -1,7 +1,7 @@
 <?php
 
 namespace Demo\UrbanDictionary;
-use Demo\UrbanDictionary\UrbanWords;
+use Demo\UrbanDictionaryUrbanWords\;
 
 class Crud implement dictionary
 {
@@ -37,7 +37,7 @@ class Crud implement dictionary
              {
                 $data[$key]['description'] = $description;
                 $data[$key]['sample-sentence'] = $sample_sentence;
-                return $data;
+                return ($data;
              }   
          }
      }
