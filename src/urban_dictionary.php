@@ -4,7 +4,7 @@ namespace Demo\UrbanDictionary;
 
 class UrbanWords
 {
-    $data = [
+    public static $data = [
         'Tight' => [ 
                         "description" => "When someone performs an awesome task",
                         "sample-sentence" => "Prosper has finished the curriculum, Tight."
@@ -23,6 +23,10 @@ class UrbanWords
         
 
     ];
+
+    public static function data(){
+        return self::$data;
+    }
 }
 
 

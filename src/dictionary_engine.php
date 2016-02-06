@@ -1,56 +1,66 @@
 <?php
 
 namespace Demo\UrbanDictionary;
-use Demo\UrbanDictionaryUrbanWords\;
+use Demo\UrbanDictionary\UrbanWords;
+use Demo\UrbanDictionary\dictionary;
 
-class Crud implement dictionary
+class Crud implements dictionary
 {
-     public function add ($word, $description, $sample_sentence) 
-     {
-         return array_push ($data, [$this-> word => $this -> description $this -> sample_sentence])
-     }   
+    public function add($word, $description, $sample_sentence) 
+    {
+        $data = UrbanWords::data();
 
-     public function retrieve ($word)
+        $data[$word] = [
+          'description' => $description,
+          'sample-sentence' => $sample_sentence,
+        ];
+        return $data;
+    }   
+
+    public function retrieve($word)
+    {
+        $data = UrbanWords::data();
+
+        foreach ($data as $key => $value) 
+        {
+            foreach ($data[$key] as $k => $v) 
+            {
+                if ($key === $word)
+                {
+                    return $key . ": " . $v . ". " . "Usage: " . $data[$key]["sample-sentence"];
+                }
+            }
+        } 
+    }   
+
+    public function update($word, $new_description, $new_sample_sentence)
+    {
+        $data = UrbanWords::data();
+
+        foreach ($data as $key => $value)
+        {
+            if ($key == $word)
+            {
+                $data[$key]["description"] = $new_description;
+                $data[$key]["sample-sentence"] = $new_sample_sentence;
+
+                return $data;
+            } 
+        }   
+    }
+
+     public function delete($word)
      {
-         foreach ($data as $key => $value) 
-         {
-             foreach ($data[$key] as $k => $v) 
-             {
-                 if ($key === $word)
-                 {
-                     return $key . ":" . $k . "Usage: " . $v 
-                 }
-                 /*else
-                 {
-                     throw exeption("word not found in the dictionary")
-                 } */ 
-             }  
-         }
-   }
+        $data = UrbanWords::data();
+
+        foreach ($data as $key => $value)
+        {
+            if ($data[$key] == $word)
+            {
+              unset($data[$key]); 
+            }
+        }
      }
 
-     public function update ($word, $description, $sample_sentence)
-     {
-         foreach ($data as $key => $value) 
-         {
-             if ($word == $key)
-             {
-                $data[$key]['description'] = $description;
-                $data[$key]['sample-sentence'] = $sample_sentence;
-                return ($data;
-             }   
-         }
-     }
-
-     public function delete ($word)
-     {
-         foreach ($data as $key => $value)
-         {
-             if ($data == $word)
-             {   
-             return unset ($data);
-             }   
-         }   
-   
-     }
-}
+}           
+               
