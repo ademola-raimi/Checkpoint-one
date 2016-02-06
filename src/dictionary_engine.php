@@ -33,18 +33,12 @@ class Crud implement dictionary
      {
          foreach ($data as $key => $value) 
          {
-             foreach ($data[$key] as $k => $v) 
+             if ($word == $key)
              {
-                 if ($key === $word)
-                 {
-                     $k["v"][0] = $description
-                     $k["v"][1] = $sample_sentence
-                 }
-                 /*else
-                 {
-                     throw exeption("word not found in the dictionary")
-                 } */ 
-             }  
+                $data[$key]['description'] = $description;
+                $data[$key]['sample-sentence'] = $sample_sentence;
+                return $data;
+             }   
          }
      }
 

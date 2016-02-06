@@ -1,10 +1,9 @@
 <?php
-
-namespace Demo\UrbanDictionary;
-
-class UrbanWords
-{
-    $data = [
+	
+    
+    function update($word, $description, $sample_sentence )    
+    {
+    	$data = [
         'Tight' => [ 
                         "description" => "When someone performs an awesome task",
                         "sample-sentence" => "Prosper has finished the curriculum, Tight."
@@ -23,6 +22,22 @@ class UrbanWords
         
 
     ];
-}
+        foreach($data as $key => $value)
+        {
+            if ($word == $key)
+            {    
+
+            	$data[$key]['description'] = $description;
+                $data[$key]['sample-sentence'] = $sample_sentence;
+                print_r($data);
+
+            }
+
+        }
+
+    }
+    update("Baller", "person that can play ball", "GMT is a baller")
 
 
+
+?>
