@@ -9,10 +9,12 @@ use Demo\UrbanDictionary\RankWord;
 
 Class RankWordTest extends PHPUnit_Framework_TestCase
 {
-     public function testRank_word()
-     {
-         $word_count= new RankWord;
-         $result = $word_count->rank_word("prosper prosper i am i am");	
-         $this->assertEquals(["prosper" => 2, "i" => 2, "am" => 2], $result);
-     }
+	public function testRank_word()
+	{
+		$word_occurence = new RankWord;
+
+		$result = $word_occurence->rank_word("Prosper has finished it Tight Tight Tight");
+
+		$this->assertEquals(array("Tight" => 3, "Prosper" => 1, "has" => 1, "finished" => 1, "it" => 1), $result);
+	}
 }

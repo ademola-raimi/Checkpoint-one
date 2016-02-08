@@ -1,12 +1,50 @@
 <?php
 
+/**
+ * class RankWord:
+ * This class creates an array of words and
+ * ranks them according to the number of
+ * occurrences of each word in
+ * descending order of
+ * magnitude.
+ *
+ * @author : Raimi Ademola
+ */
+
+
 namespace Demo\UrbanDictionary;
 class RankWord
 {
+
+	/**
+     * @method rank_word
+     *
+     * This method takes in a string and returns
+     * the ranking in frequency of the
+     * individual words
+     *
+     * The function takes a string parameter.
+     * At first, the string is converted into 
+     * an array of words through the explode function. 
+     *
+     * It then proceeds to reduce the words
+     * using the array_count_values function
+     * into an array of distinct words and
+     * frequency of occurrence.
+     *
+     * @param $input
+     * @return array
+     */
     public function rank_word($word)
 	{
+
 	    $array = explode(" ",$word);
-		return (array_count_values($array));
+		$array = (array_count_values($array));
+		arsort($array);
+		print_r($array);
+		print_r($array['Tight']);
+		return $array; 
+		
 	}
 }
 

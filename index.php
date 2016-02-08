@@ -1,7 +1,7 @@
 <?php
 	
     
-    function update($word, $description, $sample_sentence )    
+ /*   function update($word, $description, $sample_sentence )    
     {
     	$data = [
         'Tight' => [ 
@@ -36,8 +36,18 @@
         }
 
     }
-    update("Baller", "person that can play ball", "GMT is a baller")
+    update("Baller", "person that can play ball", "GMT is a baller")*/
 
+    $word = "I love this guy die die tight tight tight";
+    $array = explode(" ",$word);
+        print_r($array);
+        $array = (array_count_values($array));
+         print_r($array);
+          arsort($array);
+          print_r($array);
 
-
+         /*$wordMap = str_word_count($result, 1);
+        $ranked = array_count_values($wordMap);
+        arsort($ranked);
+*/
 ?>
