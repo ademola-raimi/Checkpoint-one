@@ -1,11 +1,18 @@
 <?php
 
 namespace Demo\UrbanDictionary;
+
 use Demo\UrbanDictionary\UrbanWords;
 use Demo\UrbanDictionary\dictionary;
+use Demo\UrbanDictionary\UserException;
 
 class Crud implements dictionary
 {
+    public function __construct()
+    {
+        $this->exception = new UserException();
+    }
+
     public function add($word, $description, $sample_sentence) 
     {
         $data = UrbanWords::data();
@@ -23,12 +30,12 @@ class Crud implements dictionary
 
         foreach ($data as $key => $value) 
         {
-            foreach ($data[$key] as $k => $v) 
-            {
-                if ($key === $word)
-                {
-                    return $key . ": " . $v . ". " . "Usage: " . $data[$key]["sample-sentence"];
-                }
+            try {
+                    $this->exception->compare_word_key($word, $key);
+                    return $key . ": " . $data[$key]["description"] . ". " . "Usage: " . $data[$key]["sample-sentence"];
+
+            } catch (Exception $e) {
+                echo $e->getMessage();
             }
         } 
     }   
@@ -39,13 +46,15 @@ class Crud implements dictionary
 
         foreach ($data as $key => $value)
         {
-            if ($key == $word)
-            {
+            try {
+                $this->exception->compare_word_key($word, $key);
                 $data[$key]["description"] = $new_description;
                 $data[$key]["sample-sentence"] = $new_sample_sentence;
-
                 return $data;
-            } 
+
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
         }   
     }
 
@@ -55,12 +64,17 @@ class Crud implements dictionary
 
         foreach ($data as $key => $value)
         {
-            if ($data[$key] == $word)
-            {
-              unset($data[$key]); 
+            try {
+                    if($word == $key)
+                    {
+                        $this->exception->compare_word_key($word, $key);
+                        unset($data[$key]); 
+                    }
+
+            } catch (Exception $e) {
+                echo $e->getMessage();
             }
         }
      }
-
-}           
+}
                

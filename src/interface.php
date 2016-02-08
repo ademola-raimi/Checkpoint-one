@@ -8,9 +8,9 @@ interface dictionary {
 
     public function retrieve ($word);
 
-    //public function update ($word, $new_description, $new_sample_sentence,);
+    public function update ($word, $new_description, $new_sample_sentence);
 
-    //public function delete ($word);
+    public function delete ($word);
 }
 
 

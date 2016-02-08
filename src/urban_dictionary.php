@@ -24,7 +24,8 @@ class UrbanWords
 
     ];
 
-    public static function data(){
+    public static function data()
+    {
         return self::$data;
     }
 }
