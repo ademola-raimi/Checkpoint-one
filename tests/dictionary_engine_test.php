@@ -9,7 +9,7 @@ namespace Demo\Tests;
 use PHPUnit_Framework_TestCase;
 use Demo\UrbanDictionary\UrbanWords;
 use Demo\UrbanDictionary\Crud;
-use Demo\UrbanDictionary\RankWordTest;
+
 
 Class CrudTest extends PHPUnit_Framework_TestCase
 {
@@ -124,7 +124,6 @@ Class RankWordTest extends PHPUnit_Framework_TestCase
 								"submit" => 1, "it" => 1, "to" => 1, "Nadayar" => 1], $result);
 	}
 }
-
 
 
 

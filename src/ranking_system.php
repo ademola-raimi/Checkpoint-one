@@ -41,8 +41,6 @@ class RankWord
 	    $array = explode(" ",$word);
 		$array = (array_count_values($array));
 		arsort($array);
-		print_r($array);
-		print_r($array['Tight']);
 		return $array; 
 		
 	}

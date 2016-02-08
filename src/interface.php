@@ -1,5 +1,16 @@
 <?php
 
+/**
+ * Interface dictionary
+ * 
+ * The purpose of this is to make my code readable
+ * It has the all the major functions I used in the 
+ * dictionary engine. It also have the parameters of 
+ * each function. 
+ *
+ * @author : Raimi Ademola
+ */
+
 namespace Demo\UrbanDictionary;
 
 interface dictionary {
