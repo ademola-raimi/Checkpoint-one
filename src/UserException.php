@@ -11,7 +11,7 @@
  * @author: Raimi Ademola
  */
 namespace Demo\UrbanDictionary;
-use Demo\UrbanDictionary\Crud;
+
 use Exception;
 
 class UserException extends Exception  
