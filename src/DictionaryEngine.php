@@ -15,10 +15,10 @@
 
 namespace Demo\UrbanDictionary;
 use Demo\UrbanDictionary\UrbanWords;
-use Demo\UrbanDictionary\dictionary;
+use Demo\UrbanDictionary\Dictionary;
 use Demo\UrbanDictionary\UserException;
 
-class Crud implements dictionary
+class DictionaryEngine implements Dictionary
 {
 
     /**
@@ -122,15 +122,16 @@ class Crud implements dictionary
 
         foreach ($data as $key => $value)
         {
-            if(strtolower($key) != strtolower($word))
-            {
-                throw new UserException("The word" . $word . "cannot be found in the dictionary");
-            }
-            else
+            if(strtolower($key) == strtolower($word))
             {
                 unset($data[$key]);
-            }    
+
+                return null;
+            } 
         }
+
+        throw new Exception($word . "cannot be found in the dictionary");
+        
      }
 }
                

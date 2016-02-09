@@ -14,7 +14,7 @@ Class RankWordTest extends PHPUnit_Framework_TestCase
 	/*
     * Test to see if an entry can be retrieved.
     */
-	public function testRank_word()
+	public function testRankWord()
 	{
 		$word_occurence = new RankWord;
 		$result = $word_occurence->rank_word("Prosper has finished it Tight Tight Tight");
