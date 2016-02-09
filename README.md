@@ -1,70 +1,139 @@
-# :package_name
+**
+**Urban Dictionary**
+================
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
-[![Software License][ico-license]](LICENSE.md)
-[![Build Status][ico-travis]][link-travis]
-[![Coverage Status][ico-scrutinizer]][link-scrutinizer]
-[![Quality Score][ico-code-quality]][link-code-quality]
-[![Total Downloads][ico-downloads]][link-downloads]
 
-**Note:** Replace ```:author_name``` ```:author_username``` ```:author_website``` ```:author_email``` ```:vendor``` ```:package_name``` ```:package_description``` with their correct values in [README.md](README.md), [CHANGELOG.md](CHANGELOG.md), [CONTRIBUTING.md](CONTRIBUTING.md), [LICENSE.md](LICENSE.md) and [composer.json](composer.json) files, then delete this line.
+----------
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
-PSRs you support to avoid any confusion with users and contributors.
 
-## Install
+The Urban dictionary is the collation of urban (slangs) words. It is a platform that stores the words and their meanings and their usage in a multi associative array. The platform allows for addition, editing, updating and retrieving.
 
-Via Composer
+The package also has a ranking system where words in a sentence are ranked based on the number of occurrences of each word. 
 
-``` bash
-$ composer require :vendor/:package_name
-```
+**Design**
+------
 
-## Usage
 
-``` php
-$skeleton = new League\Skeleton();
-echo $skeleton->echoPhrase('Hello, League!');
-```
+----------
 
-## Change log
+Classes
 
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
+ - UrbanWords: Contains an array where urban words are stored.
+ 
+ - Crud: Contain methods to add new words, retrieve words, update
+   existing words, and delete words in the urban dictionary.
+ - RankWord: Contain methods that rank words based on the number of     times they occurred in the sentence.
 
-## Testing
+**Installation**
+-------
 
-``` bash
-$ composer test
-```
 
-## Contributing
+----------
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) and [CONDUCT](CONDUCT.md) for details.
 
-## Security
+To install this package, PHP 5.5+ and composer are required. After these requirements have been met, type the following code 
 
-If you discover any security related issues, please email :author_email instead of using the issue tracker.
+          $ composer require demo/urbandictionary
 
-## Credits
+**Usage**
+-----
 
-- [:author_name][link-author]
-- [All Contributors][link-contributors]
 
-## License
+----------
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/:vendor/:package_name.svg?style=flat-square
-[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/:vendor/:package_name/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/:vendor/:package_name.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/:vendor/:package_name.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/:vendor/:package_name.svg?style=flat-square
+The dictionary contains urban words with their meaning and usage
 
-[link-packagist]: https://packagist.org/packages/:vendor/:package_name
-[link-travis]: https://travis-ci.org/:vendor/:package_name
-[link-scrutinizer]: https://scrutinizer-ci.com/g/:vendor/:package_name/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/:vendor/:package_name
-[link-downloads]: https://packagist.org/packages/:vendor/:package_name
-[link-author]: https://github.com/:author_username
-[link-contributors]: ../../contributors
+ - Add urban words to the dictionary
+
+	    $word = "word to add";
+	
+	    $description = "description";
+	
+	    $sample_sentence = "sample sentence";
+
+	    Crud::add("word to add", "description", "sample sentence");
+
+ - Retrieve a word from the dictionary
+
+	    $word = "word to retrieve";
+	    
+	     Crud::retrieve($word);
+
+ - Update a word, its meaning and its sample sentence
+ 
+		 $word = "word to update or edit";
+		 
+		 $new_description = "the new description";
+		
+		 $new_sample_sentence = "the new sample sentence";
+		
+		Crud::update("word", "new description", "new sample sentence");
+
+ - Delete a word in the urban dictionary
+
+		$word = "word to delete";
+		Crud::delete("word");
+
+ - Rank words in a sentence
+
+		 $word = "word to rank";
+
+          print_r(RankWord::rank_word($word));
+
+**Testing**
+-------
+
+
+----------
+
+
+Navigate to the "tests" directory and run:
+
+    phpunit dictionary_engine_test.php
+
+    phpunit ranking_system_test.php
+
+
+**Change log**
+----------
+
+
+----------
+
+
+Please check out [CHANGELOG](https://github.com/andela-araimi/Checkpoint-one/blob/master/CHANGELOG.md/%22CHANGELOG%22) file for information on what has changed recently.
+
+**Contributing**
+------------
+
+
+----------
+
+
+Please check out [CONTRIBUTING](https://github.com/andela-araimi/Checkpoint-one/edit/master/CONTRIBUTING.md/%22CONTRIBUTING%22) file for detailed contribution guidelines.
+
+**Security**
+--------
+
+
+----------
+If you discover any issue, kindly contact ademola.raimi@andela.com
+
+**Credits**
+-------
+
+
+----------
+
+
+Urban Dictionary is maintained by Raimi Ademola.
+
+**License**
+-------
+
+
+----------
+
+
+UrbanDictionary is released under the [MIT Licence](https://github.com/andela-araimi/Checkpoint-one/blob/master/LICENSE.md/%22MIT%20License%22). See the bundled LICENSE file for more details.
