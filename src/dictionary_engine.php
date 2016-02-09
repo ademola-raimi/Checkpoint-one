@@ -10,21 +10,16 @@
  *
  * @property $Urban_dictionary array;
  *
- * @author : Raimi Ademola
+ * @author: Raimi Ademola
  */
 
 namespace Demo\UrbanDictionary;
-
 use Demo\UrbanDictionary\UrbanWords;
 use Demo\UrbanDictionary\dictionary;
 use Demo\UrbanDictionary\UserException;
 
 class Crud implements dictionary
 {
-    public function __construct()
-    {
-        $this->exception = new UserException();
-    }
 
     /**
      *  @method add
@@ -38,15 +33,14 @@ class Crud implements dictionary
      * @param @sample_sentence
      * @return array
      */
-
     public function add($word, $description, $sample_sentence) 
     {
         $data = UrbanWords::data();
 
         $data[$word] = [
-          'description' => $description,
-          'sample-sentence' => $sample_sentence,
-        ];
+                          'description' => $description,
+                          'sample-sentence' => $sample_sentence,
+                    ];
         return $data;
     }   
 
@@ -61,19 +55,19 @@ class Crud implements dictionary
      * @return array
      * @throws UserException
      */
-
     public function retrieve($word)
     {
         $data = UrbanWords::data();
 
         foreach ($data as $key => $value) 
         {
-            try {
-                    $this->exception->compare_word_key($word, $key);
-                    return $key . ": " . $data[$key]["description"] . ". " . "Usage: " . $data[$key]["sample-sentence"];
-
-            } catch (Exception $e) {
-                echo $e->getMessage();
+            if(strtolower($key) == strtolower($word)) 
+            {
+                return $key . ": " . $data[$key]["description"] . ". " . "Usage: " . $data[$key]["sample-sentence"];
+            }
+            else 
+            {
+               throw new UserException("The word" . $word . "cannot be found in the dictionary"); 
             }
         } 
     }   
@@ -92,22 +86,22 @@ class Crud implements dictionary
      * @return array
      * @throws UserException
      */
-
     public function update($word, $new_description, $new_sample_sentence)
     {
         $data = UrbanWords::data();
 
         foreach ($data as $key => $value)
         {
-            try {
-                $this->exception->compare_word_key($word, $key);
+            if(strtolower($key) == strtolower($word)) 
+            {
                 $data[$key]["description"] = $new_description;
                 $data[$key]["sample-sentence"] = $new_sample_sentence;
                 return $data;
-
-            } catch (Exception $e) {
-                echo $e->getMessage();
             }
+            else 
+            {
+               throw new UserException("The word" . $word . "cannot be found in the dictionary"); 
+            }    
         }   
     }
 
@@ -122,23 +116,20 @@ class Crud implements dictionary
      * @throws UserException
      * @return Null
      */
-
      public function delete($word)
      {
         $data = UrbanWords::data();
 
         foreach ($data as $key => $value)
         {
-            try {
-                    if($word == $key)
-                    {
-                        $this->exception->compare_word_key($word, $key);
-                        unset($data[$key]); 
-                    }
-
-            } catch (Exception $e) {
-                echo $e->getMessage();
+            if(strtolower($key) != strtolower($word))
+            {
+                throw new UserException("The word" . $word . "cannot be found in the dictionary");
             }
+            else
+            {
+                //unset($data[$key]);
+            }    
         }
      }
 }

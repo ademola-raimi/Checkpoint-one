@@ -11,7 +11,6 @@
  * @author : Raimi Ademola
  */
 
-
 namespace Demo\UrbanDictionary;
 class RankWord
 {
@@ -37,12 +36,10 @@ class RankWord
      */
     public function rank_word($word)
 	{
-
 	    $array = explode(" ",$word);
 		$array = (array_count_values($array));
 		arsort($array);
 		return $array; 
-		
 	}
 }
 

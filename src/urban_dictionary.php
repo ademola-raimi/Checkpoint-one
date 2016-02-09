@@ -1,13 +1,12 @@
 <?php
+
 /**
  * Class Dictionary: 
  * This class contains an associative arrray
  * of words, descriptions and sample sentences.
  * It contains one method. 
  * 
- *
- *
- * @author : Raimi Ademola
+ * @author: Raimi Ademola
  */
 
 namespace Demo\UrbanDictionary;
@@ -36,10 +35,8 @@ class UrbanWords
      * @method data
      * It returns the dictionary
      * 
-     *
      * @return array
      */
-
     public static function data()
     {
         return self::$data;

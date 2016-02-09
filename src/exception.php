@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * class UserException
  * @extends Exception
@@ -9,18 +8,26 @@
  * the key is not found in the
  * array
  *
- * @author : Raimi Ademola
+ * @author: Raimi Ademola
  */
 namespace Demo\UrbanDictionary;
-use Demo\UrbanDictionary\UrbanWords;
 use Demo\UrbanDictionary\Crud;
 use Exception;
 
 class UserException extends Exception  
 {
+	public $error_message;
 
 	/**
-	 * @method compare_word_key
+     * @param string $error_message
+	 */
+	public function __construct($error_message)
+	{
+		$this->message->$error_message;
+	}
+
+    /**
+	 * @method get_error_message
 	 *
 	 * returns an error message to the calling
 	 * method. check if the $key and $word are not equal,
@@ -30,14 +37,9 @@ class UserException extends Exception
 	 *
 	 * @return string
 	 */
-
-	public function compare_word_key($word,$key)
+	public function get_error_message()
 	{
-		if(strtolower($key) != strtolower($word))
-		{
-			throw new Exception($word . " is not found in the dictionary, try another word (ps: input word only)");
-		}	
-
+		return $this->message;
 	}
 }
 
