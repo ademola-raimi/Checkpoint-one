@@ -87,11 +87,9 @@ The dictionary contains urban words with their meaning and usage
 ----------
 
 
-Navigate to the "tests" directory and run:
+Run the following command in your root directory:
 
-    phpunit dictionary_engine_test.php
-
-    phpunit ranking_system_test.php
+    composer/vendor/bin/phpunit phpunit
 
 
 **Change log**
