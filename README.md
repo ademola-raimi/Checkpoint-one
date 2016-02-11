@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/andela-araimi/Checkpoint-one/badge.svg?branch=master)](https://coveralls.io/github/andela-araimi/Checkpoint-one?branch=master)
+
 **Urban Dictionary**
 ================
 
@@ -5,9 +7,7 @@
 ----------
 
 
-The Urban dictionary is the collation of urban (slangs) words. It is a platform that stores the words and their meanings and their usage in a multi associative array. The platform allows for addition, editing, updating and retrieving.
-
-The package also has a ranking system where words in a sentence are ranked based on the number of occurrences of each word. 
+The Urban dictionary is the collation of urban (slangs) words. It is a platform that stores the words and their meanings and their usage in a multi associative array. The platform allows for addition, editing, updating and retrieving. 
 
 **Design**
 ------
