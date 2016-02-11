@@ -42,4 +42,3 @@ class RankWord
 	    return $array; 
 	}
 }
-

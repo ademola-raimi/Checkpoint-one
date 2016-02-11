@@ -19,6 +19,3 @@ interface Dictionary {
     public function update ($word, $newDescription, $newSampleSentence);
     public function delete ($word);
 }
-
-
-

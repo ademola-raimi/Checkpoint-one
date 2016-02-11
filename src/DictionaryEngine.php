@@ -127,7 +127,6 @@ class DictionaryEngine implements Dictionary
              throw new Exception($word . "cannot be found in the dictionary");
         }
         return $data[$word];
-        
      }
 }
                

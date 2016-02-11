@@ -117,4 +117,3 @@ Class DictionaryEngineTest extends PHPUnit_Framework_TestCase
 		  $this->assertNotContains('Beer me', $result);
 	}
 }
-
