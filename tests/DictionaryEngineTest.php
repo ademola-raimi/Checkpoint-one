@@ -73,6 +73,16 @@ Class DictionaryEngineTest extends PHPUnit_Framework_TestCase
                     ]], $result);
 	}
 
+	public function testRetrieveAll()
+	{
+	    $data = UrbanWords::data();
+
+	    $arrayRetrieveAll = new DictionaryEngine;
+
+	    $result = $arrayRetrieveAll->retrieveAll();
+	    $this->assertEquals($data, $result);
+	}
+
 	/*
      * Test to see if an entry can be edited or updated.
      */
@@ -102,6 +112,7 @@ Class DictionaryEngineTest extends PHPUnit_Framework_TestCase
 	  public function testDelete()
 	  {
 	      $data         = UrbanWords::data();
+
 	      $arrayDelete  = new DictionaryEngine;
 
     	  $result       = $arrayDelete->delete('Tight');

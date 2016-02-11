@@ -70,6 +70,21 @@ class DictionaryEngine implements Dictionary
         } else {
             throw new UserException("The word '" . $word . "' cannot be found in the dictionary"); 
         }
+    }
+    
+    /**
+     *  @method retrieveAll
+     *
+     * This method takes no parameter. When called it returns the whole dictionary
+     *
+     * @param void
+     * @return array
+     */
+    public function retrieveAll()
+    {
+        $data = UrbanWords::data();
+        
+        return $data;    
     }   
 
     /**

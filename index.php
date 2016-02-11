@@ -11,8 +11,8 @@ use Demo\UrbanDictionary\UserException;
 	 
 	  $newWord = new DictionaryEngine;
 
-	  //  $result = $newWord->add("ginger", "when someone has energy", "You need ginger in your cp1");
-	  // var_dump($result);
+	    //$result = $newWord->add("ginger", "when someone has energy", "You need ginger in your cp1");
+	   //var_dump($result);
 
 	  // $result = $newWord->add("demo", "short version of Ademola", "Demo is a rockstar programmer");
 	  // var_dump($result);
@@ -21,12 +21,15 @@ use Demo\UrbanDictionary\UserException;
 	  // print_r($result);
 
 
-	  // try{
-	  // 	$result = $newWord->update('tight', 'when something is wonderful', 'Prosper is Tight');
-		 // print_r($result);
-	  // } catch(UserException $e) {
-	  // 	print($e->getMessage());
-	  // }
+	   // try{
+	   // 	$result = $newWord->update('tght', 'when something is wonderful', 'Prosper is Tight');
+		  // print_r($result);
+	   // } catch(UserException $e) {
+	   // 	print($e->getMessage());
+	   // }
+
+	  $result = $newWord->retrieveAll();
+	  print_r($result);
 	
 
 
@@ -40,6 +43,30 @@ use Demo\UrbanDictionary\UserException;
 	  // }
 	 // $result = $newWord->delete('Baller');
 	 // print_r($result);
-	  $result = $newWord->delete('BaLLER');
-	 print_r($result);
+	 //  $result = $newWord->delete('BaLLER');
+	 // print_r($result);
+// $wordFormat = "I love playing ball";
+// echo lcfirst(strtoupper($wordFormat));
+	  
+    // print sha1("hello") . "<br>";
+    // print sha1("Hello") . "<br>";
+    // print sha1("hello") . "<br>";
+    // print sha1("This is a very, very, very, very, very, very, very long test");
+
+
+
+
+
+
+
+
 ?> 
+
+
+
+
+
+
+
+
+
