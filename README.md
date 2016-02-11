@@ -1,4 +1,4 @@
-[![Coverage Status](https://coveralls.io/repos/github/andela-araimi/Checkpoint-one/badge.svg?branch=master)](https://coveralls.io/github/andela-araimi/Checkpoint-one?branch=master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/andela-araimi/Checkpoint-one/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/andela-araimi/Checkpoint-one/?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/andela-araimi/Checkpoint-one/badge.svg?branch=master)](https://coveralls.io/github/andela-araimi/Checkpoint-one?branch=master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/andela-araimi/Checkpoint-one/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/andela-araimi/Checkpoint-one/?branch=master) [![Build Status](https://travis-ci.org/andela-araimi/Checkpoint-one.svg?branch=master)](https://travis-ci.org/andela-araimi/Checkpoint-one)
 
 **Urban Dictionary**
 ================
