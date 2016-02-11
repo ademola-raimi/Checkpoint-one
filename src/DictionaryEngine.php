@@ -124,7 +124,7 @@ class DictionaryEngine implements Dictionary
             unset($data[$word]);
             return $data;
         }else {
-             throw new Exception($word . "cannot be found in the dictionary");
+            throw new Exception($word . "cannot be found in the dictionary");
         }
         return $data[$word];
      }
