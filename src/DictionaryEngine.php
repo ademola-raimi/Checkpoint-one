@@ -8,7 +8,7 @@
  * UrbanWords class. The class also have an interface class 
  * implementation called dictionary
  *
- * @property $Urban_dictionary array;
+ * @property $UrbanDictionary array;
  *
  * @author: Raimi Ademola
  */
@@ -30,18 +30,22 @@ class DictionaryEngine implements Dictionary
      *
      * @param $word 
      * @param @description 
-     * @param @sample_sentence
+     * @param @sampleSentence
      * @return array
      */
-    public function add($word, $description, $sample_sentence) 
+    public function add($word, $description, $sampleSentence) 
     {
         $data = UrbanWords::data();
 
-        $data[$word] = [
+        $word = UrbanWords::formatWord($word);
+
+         $data[$word] = [
                           'description' => $description,
-                          'sample-sentence' => $sample_sentence,
+                          'sample-sentence' => $sampleSentence,
                     ];
-        return $data;
+         //print_r([$word => [$data[$word]]]);           
+
+         return [$word => [$data[$word]]];
     }   
 
     /**
@@ -59,50 +63,61 @@ class DictionaryEngine implements Dictionary
     {
         $data = UrbanWords::data();
 
-        foreach ($data as $key => $value) 
-        {
-            if(strtolower($key) == strtolower($word)) 
-            {
-                return $key . ": " . $data[$key]["description"] . ". " . "Usage: " . $data[$key]["sample-sentence"];
-            }
-            else 
-            {
-               throw new UserException("The word" . $word . "cannot be found in the dictionary"); 
-            }
-        } 
+        $word = UrbanWords::formatWord($word);
+
+        if (array_key_exists($word, $data)) {
+            //print_r([$word =>$data[$word]]);
+            return [$word =>$data[$word]];
+        } else {
+            throw new UserException("The word '" . $word . "' cannot be found in the dictionary"); 
+        }
+
     }   
 
     /**
      *  @method update
      *
-     * This method takes three parameters: @word, @new_description and @sample_sentence.
+     * This method takes three parameters: @word, @DictionaryEngineand @sample_sentence.
      * It uses the @word to search through the associative array for the key. 
-     * If the key is found, it replaces @new_description with "description" and 
+     * If the key is found, it replaces @DictionaryEnginewith "description" and 
      * @new_sample_sentence with "sample_sentence". If the key is not, an error message is thrown
      *
      * @param $word
      * @param @description 
-     * @param @sample_sentence
+     * @param @sampleSentence
      * @return array
      * @throws UserException
      */
-    public function update($word, $new_description, $new_sample_sentence)
+    public function update($word, $newDescription, $newSampleSentence)
     {
         $data = UrbanWords::data();
 
-        foreach ($data as $key => $value)
-        {
-            if(strtolower($key) == strtolower($word)) 
-            {
-                $data[$key]["description"] = $new_description;
-                $data[$key]["sample-sentence"] = $new_sample_sentence;
-                return $data;
-            }
-            else 
-            {
-               throw new UserException("The word" . $word . "cannot be found in the dictionary"); 
-            }    
-        }   
+        $word = UrbanWords::formatWord($word);
+
+        if (array_key_exists($word, $data)){
+            $data[$word] = [
+                'description' => $newDescription,
+                'sampleSentence' => $newSampleSentence
+            ];
+            //print_r([$word => $data[$word]]);
+            return [$word => $data[$word]];
+        } else {
+            throw new UserException("The word " . $word . " cannot be found in the dictionary"); 
+        }
+
+        // foreach ($data as $key => $value)
+        // {
+        //     if(strtolower($key) == strtolower($word)) 
+        //     {
+        //         $data[$key]["description"] = $newDescription;
+        //         $data[$key]["sampleSentence"] = $newSampleSentence;
+        //         return $data;
+        //     }
+        //     else 
+        //     {
+        //        
+        //     }    
+        // }   
     }
 
     /**
@@ -120,17 +135,26 @@ class DictionaryEngine implements Dictionary
      {
         $data = UrbanWords::data();
 
-        foreach ($data as $key => $value)
-        {
-            if(strtolower($key) == strtolower($word))
-            {
-                unset($data[$key]);
+        $word = UrbanWords::formatWord($word);
 
-                return null;
-            } 
+        if (array_key_exists($word, $data)){
+            unset($data[$word]);
+            return $data;
+        }else {
+             throw new Exception($word . "cannot be found in the dictionary");
         }
+        return $data[$word];
 
-        throw new Exception($word . "cannot be found in the dictionary");
+        // foreach ($data as $key => $value)
+        // {
+        //     if(strtolower($key) == strtolower($word))
+        //     {
+        //         unset($data[$key]);
+        //         return $data;
+        //     } 
+        // }
+
+       
         
      }
 }

@@ -16,7 +16,7 @@ class RankWord
 {
 
 	/**
-     * @method rank_word
+     * @method rankWord
      *
      * This method takes in a string and returns
      * the ranking in frequency of the
@@ -34,9 +34,9 @@ class RankWord
      * @param $input
      * @return array
      */
-    public function rank_word($word)
+    public function rankWord($word)
 	{
-	    $array = explode(" ",$word);
+	     $array = explode(" ",$word);
 		$array = (array_count_values($array));
 		arsort($array);
 		return $array; 

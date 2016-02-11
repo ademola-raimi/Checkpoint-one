@@ -16,18 +16,18 @@ use Exception;
 
 class UserException extends Exception  
 {
-	public $error_message;
+	public $message;
 
 	/**
-     * @param string $error_message
+     * @param string $errorMessage
 	 */
-	public function __construct($error_message)
+	public function __construct($errorMessage)
 	{
-		$this->message->$error_message;
+		$this->message = $errorMessage;
 	}
 
     /**
-	 * @method get_error_message
+	 * @method getErrorMessage
 	 *
 	 * returns an error message to the calling
 	 * method. check if the $key and $word are not equal,
@@ -37,7 +37,7 @@ class UserException extends Exception
 	 *
 	 * @return string
 	 */
-	public function get_error_message()
+	public function getErrorMessage()
 	{
 		return $this->message;
 	}

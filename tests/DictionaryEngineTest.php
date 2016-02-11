@@ -19,11 +19,34 @@ Class DictionaryEngineTest extends PHPUnit_Framework_TestCase
      */
 	public function testAdd()
 	{
-		$array_add = new DictionaryEngine;
-		$data = $array_add->add("Gay", "homosexual male", "He is a gay");
-		$this->assertEquals(["description" => "homosexual male",
-                        	"sample-sentence" => "He is a gay"
-                    		], $data['Gay']);
+		$arrayAdd = new DictionaryEngine;
+		$result      = $arrayAdd->add("Gay", "homosexual male", "He is a gay");
+	$this->assertEquals(["Gay" => [
+                           "0" => [
+                           "description" => "homosexual male",
+                           "sample-sentence" => "He is a gay"
+                                        ]
+                                           ]
+		                 ], $result);
+
+	$result      = $arrayAdd->add("GAY", "homosexual male", "He is a gay");
+	$this->assertEquals(["Gay" => [
+                           "0" => [
+                           "description" => "homosexual male",
+                           "sample-sentence" => "He is a gay"
+                                        ]
+                                           ]
+		                 ], $result);
+
+	$result      = $arrayAdd->add("gay", "homosexual male", "He is a gay");
+	$this->assertEquals(["Gay" => [
+                           "0" => [
+                           "description" => "homosexual male",
+                           "sample-sentence" => "He is a gay"
+                                        ]
+                                           ]
+		                 ], $result);
+		
 	}
 
 	/*
@@ -32,16 +55,26 @@ Class DictionaryEngineTest extends PHPUnit_Framework_TestCase
 
 	public function testRetrieve()
 	{
-		$array_retrieve = new DictionaryEngine;
+		$arrayRetrieve = new DictionaryEngine;
 		
-		$result = $array_retrieve->retrieve("Tight");
-		$this->assertEquals("Tight: When someone performs an awesome task. Usage: Prosper has finished the curriculum, Tight.", $result);
+		$result         = $arrayRetrieve->retrieve("Tight");
+		$this->assertEquals([ 'Tight' => [ 
+                        "description" => "When someone performs an awesome task",
+                        "sampleSentence" => "Prosper has finished the curriculum, Tight."
+                    ]], $result);
 
-		$result = $array_retrieve->retrieve("tight");
-		$this->assertEquals("Tight: When someone performs an awesome task. Usage: Prosper has finished the curriculum, Tight.", $result);
+		$result         = $arrayRetrieve->retrieve("tight");
+		$this->assertEquals([ 'Tight' => [ 
+                        "description" => "When someone performs an awesome task",
+                        "sampleSentence" => "Prosper has finished the curriculum, Tight."
+                    ]], $result);
 
-		$result = $array_retrieve->retrieve("TIGHT");
-		$this->assertEquals("Tight: When someone performs an awesome task. Usage: Prosper has finished the curriculum, Tight.", $result);
+		$result         = $arrayRetrieve->retrieve("TIGHT");
+		$this->assertEquals([ 'Tight' => [ 
+                        "description" => "When someone performs an awesome task",
+                        "sampleSentence" => "Prosper has finished the curriculum, Tight."
+                    ]], $result);
+		//print_r($result);
 	}
 
 	/*
@@ -49,39 +82,43 @@ Class DictionaryEngineTest extends PHPUnit_Framework_TestCase
      */
 	public function testUpdate()
 	{
-		$array_update = new DictionaryEngine;
+		$arrayUpdate = new DictionaryEngine;
 
-		$data = $array_update->update("Tight", "when something is wonderful", "He is tight");
-		$this->assertEquals(["description" => "when something is wonderful",
-                        	"sample-sentence" => "He is tight"
-                    		], $data['Tight']);
+		$result      = $arrayUpdate->update("Tight", "when something is wonderful", "He is tight");
+		$this->assertEquals(['Tight' => ['description' => 'when something is wonderful',
+										  'sampleSentence'=>   'He is tight' 
+							              ]], $result);
 
-		$data = $array_update->update("tight", "when something is wonderful", "He is tight");
-		$this->assertEquals(["description" => "when something is wonderful",
-                        	"sample-sentence" => "He is tight"
-                    		], $data['Tight']);
+		$result       = $arrayUpdate->update("tight", "when something is wonderful", "He is tight");
+		$this->assertEquals(['Tight' => ['description' => 'when something is wonderful',
+										  'sampleSentence'=>   'He is tight' 
+							              ]], $result);
 
-		$data         = $array_update->update("TIGHT", "when something is wonderful", "He is tight");
-		$this->assertEquals(["description" => "when something is wonderful",
-                        	"sample-sentence" => "He is tight"
-                    		], $data['Tight']);
+		$result       = $arrayUpdate->update("TIGHT", "when something is wonderful", "He is tight");
+		$this->assertEquals(['Tight' => ['description' => 'when something is wonderful',
+										  'sampleSentence'=>   'He is tight' 
+							              ]], $result);
 	}
 
 	/*
      * Test to see if an entry can be removed or deleted.
      */
-	public function testDelete()
-	{
-		$array_delete = new DictionaryEngine;
+	  public function testDelete()
+	  {
+	  	 $data = UrbanWords::data();
+		 $arrayDelete  = new DictionaryEngine;
 
-		$result       = $array_delete->delete("Tight");
-		$this->assertEquals($result['Tight'], null);
+    	 $result        = $arrayDelete->delete('Tight');
+		 $this->assertNotContains('Tight', $result);
 
-		$result       = $array_delete->delete("tight");
-		$this->assertEquals($result['Tight'], null);
+		$result     = $arrayDelete->delete("tight");
+		$this->assertNotContains('Tight', $result);
 
-		$result       = $array_delete->delete("TIGHT");
-		$this->assertEquals($result['Tight'], null);
+		$result     = $arrayDelete->delete("TIGHT");
+		$this->assertNotContains('Tight', $result);
+
+		$result     = $arrayDelete->delete("Beer me");
+		$this->assertNotContains('Beer me', $result);
 	}
 }
 
