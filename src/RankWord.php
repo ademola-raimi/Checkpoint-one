@@ -12,10 +12,10 @@
  */
 
 namespace Demo\UrbanDictionary;
+
 class RankWord
 {
-
-	/**
+    /**
      * @method rankWord
      *
      * This method takes in a string and returns
@@ -36,10 +36,10 @@ class RankWord
      */
     public function rankWord($word)
 	{
-	     $array = explode(" ",$word);
-		$array = (array_count_values($array));
-		arsort($array);
-		return $array; 
+	    $array = explode(" ",$word);
+	    $array = (array_count_values($array));
+	    arsort($array);
+	    return $array; 
 	}
 }
 

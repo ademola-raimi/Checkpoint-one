@@ -6,7 +6,7 @@
 ----------
 
 
-The Urban dictionary is the collation of urban (slangs) words. It is a platform that stores the words and their meanings and their usage in a multi associative array. The platform allows for addition, editing, updating and retrieving. 
+The Urban dictionary is the collation of urban(slangs) words. It is a package that stores meaning of words and their usage in a multi associative array. The platform allows for addition, editing, updating and retrieving. 
 
 **Design**
 ------
@@ -20,7 +20,8 @@ Classes
  
  - Crud: Contain methods to add new words, retrieve words, update
    existing words, and delete words in the urban dictionary.
- - RankWord: Contain methods that rank words based on the number of     times they occurred in the sentence.
+ - RankWord: Contain methods that rank words based on the number of     times they occurred in the 
+   sentence.
 
 **Installation**
 -------
@@ -56,15 +57,15 @@ The dictionary contains urban words with their meaning and usage
 
 	    $word = "word to retrieve";
 	    
-	     Crud::retrieve($word);
+	    Crud::retrieve($word);
 
  - Update a word, its meaning and its sample sentence
  
-		 $word = "word to update or edit";
+		$word = "word to update or edit";
 		 
-		 $new_description = "the new description";
+		$new_description = "the new description";
 		
-		 $new_sample_sentence = "the new sample sentence";
+		$new_sample_sentence = "the new sample sentence";
 		
 		Crud::update("word", "new description", "new sample sentence");
 
@@ -75,9 +76,9 @@ The dictionary contains urban words with their meaning and usage
 
  - Rank words in a sentence
 
-		 $word = "word to rank";
+		$word = "word to rank";
 
-          print_r(RankWord::rank_word($word));
+        print_r(RankWord::rank_word($word));
 
 **Testing**
 -------

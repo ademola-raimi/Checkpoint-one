@@ -10,13 +10,14 @@
  *
  * @author: Raimi Ademola
  */
+
 namespace Demo\UrbanDictionary;
 
 use Exception;
 
 class UserException extends Exception  
 {
-	public $message;
+    public $message;
 
 	/**
      * @param string $errorMessage
@@ -42,6 +43,3 @@ class UserException extends Exception
 		return $this->message;
 	}
 }
-
-
-

@@ -14,6 +14,7 @@
  */
 
 namespace Demo\UrbanDictionary;
+
 use Demo\UrbanDictionary\UrbanWords;
 use Demo\UrbanDictionary\Dictionary;
 use Demo\UrbanDictionary\UserException;
@@ -42,8 +43,7 @@ class DictionaryEngine implements Dictionary
          $data[$word] = [
                           'description' => $description,
                           'sample-sentence' => $sampleSentence,
-                    ];
-         //print_r([$word => [$data[$word]]]);           
+                    ];           
 
          return [$word => [$data[$word]]];
     }   
@@ -66,12 +66,10 @@ class DictionaryEngine implements Dictionary
         $word = UrbanWords::formatWord($word);
 
         if (array_key_exists($word, $data)) {
-            //print_r([$word =>$data[$word]]);
             return [$word =>$data[$word]];
         } else {
             throw new UserException("The word '" . $word . "' cannot be found in the dictionary"); 
         }
-
     }   
 
     /**
@@ -94,30 +92,15 @@ class DictionaryEngine implements Dictionary
 
         $word = UrbanWords::formatWord($word);
 
-        if (array_key_exists($word, $data)){
+        if (array_key_exists($word, $data)) {
             $data[$word] = [
                 'description' => $newDescription,
                 'sampleSentence' => $newSampleSentence
             ];
-            //print_r([$word => $data[$word]]);
             return [$word => $data[$word]];
         } else {
             throw new UserException("The word " . $word . " cannot be found in the dictionary"); 
-        }
-
-        // foreach ($data as $key => $value)
-        // {
-        //     if(strtolower($key) == strtolower($word)) 
-        //     {
-        //         $data[$key]["description"] = $newDescription;
-        //         $data[$key]["sampleSentence"] = $newSampleSentence;
-        //         return $data;
-        //     }
-        //     else 
-        //     {
-        //        
-        //     }    
-        // }   
+        }  
     }
 
     /**
@@ -137,24 +120,13 @@ class DictionaryEngine implements Dictionary
 
         $word = UrbanWords::formatWord($word);
 
-        if (array_key_exists($word, $data)){
+        if (array_key_exists($word, $data)) {
             unset($data[$word]);
             return $data;
         }else {
              throw new Exception($word . "cannot be found in the dictionary");
         }
         return $data[$word];
-
-        // foreach ($data as $key => $value)
-        // {
-        //     if(strtolower($key) == strtolower($word))
-        //     {
-        //         unset($data[$key]);
-        //         return $data;
-        //     } 
-        // }
-
-       
         
      }
 }

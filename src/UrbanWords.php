@@ -18,17 +18,15 @@ class UrbanWords
                         "description" => "When someone performs an awesome task",
                         "sampleSentence" => "Prosper has finished the curriculum, Tight."
                     ],
-        
         'Baller' => [
                         "descrition" => "A thug that has made it to the big time",
                         "sampleSentence" => "pain is a part of the game when you are a baller."
                     ],
-        
 
         'Beer me' => [
                         "description" => "Besides the obvious give me a beer, it is used to ask    someone to pass or hand an object to you.",
                         "sampleSentence" => "Lord, beer me strength"
-                    ]
+                     ]
     ];
 
     /**
@@ -37,15 +35,19 @@ class UrbanWords
      * 
      * @return array
      */
-    public static function data()
-    {
+     public static function data()
+     {
         return self::$data;
-    }
+     }
 
-    public static function formatWord($word)
-    {
+     /**
+     * @method data
+     * It returns the conversion of the key
+     * 
+     * @return string
+     */
+     public static function formatWord($word)
+     {
         return ucfirst(strtolower($word));
-    }
+     }
 }
-
-
