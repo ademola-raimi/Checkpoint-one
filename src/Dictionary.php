@@ -16,6 +16,7 @@ namespace Demo\UrbanDictionary;
 interface Dictionary {
     public function add ($word, $description, $sampleSentence);
     public function retrieve ($word);
+    public function retrieveAll ();
     public function update ($word, $newDescription, $newSampleSentence);
     public function delete ($word);
 }
