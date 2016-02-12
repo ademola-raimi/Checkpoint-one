@@ -127,7 +127,7 @@ class DictionaryEngine implements Dictionary
      *
      * @param $word
      * @throws UserException
-     * @return Null
+     * @return Array
      */
      public function delete($word)
      {
