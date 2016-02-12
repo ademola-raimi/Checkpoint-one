@@ -21,30 +21,28 @@ use Demo\UrbanDictionary\UserException;
 	  // print_r($result);
 
 
-	   // try{
-	   // 	$result = $newWord->update('tght', 'when something is wonderful', 'Prosper is Tight');
-		  // print_r($result);
-	   // } catch(UserException $e) {
-	   // 	print($e->getMessage());
-	   // }
+	   try{
+	   	$result = $newWord->update('tght', 'when something is wonderful', 'Prosper is Tight');
+		  print_r($result);
+	   } catch(UserException $e) {
+	   	print($e->getMessage());
+	   }
 
-	  $result = $newWord->retrieveAll();
-	  print_r($result);
+	  // $result = $newWord->retrieveAll();
+	  // print_r($result);
 	
 
 
 
-	  // try{
+	   //try {
 	 	
-	  // 	$result = $newWord->retrieve('tightS');
-	  // 	print_r($result);
-	  // } catch(UserException $e) {
-	  // 	print($e->getMessage());
-	  // }
-	 // $result = $newWord->delete('Baller');
-	 // print_r($result);
-	 //  $result = $newWord->delete('BaLLER');
-	 // print_r($result);
+	   	
+	   //} catch(UserException $e) {
+	   	//print($e->getMessage());
+	   //}
+	   // $result = $newWord->delete('Baller');
+	   //  $result = $newWord->delete('tight');
+	   // print_r($result);
 // $wordFormat = "I love playing ball";
 // echo lcfirst(strtoupper($wordFormat));
 	  

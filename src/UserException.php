@@ -26,20 +26,4 @@ class UserException extends Exception
 	{
 		$this->message = $errorMessage;
 	}
-
-    /**
-	 * @method getErrorMessage
-	 *
-	 * returns an error message to the calling
-	 * method. check if the $key and $word are not equal,
-	 * If they are not it throws an exception
-	 *
-	 * usage $e->getErrorMessage();
-	 *
-	 * @return string
-	 */
-	public function getErrorMessage()
-	{
-		return $this->message;
-	}
 }
