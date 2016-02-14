@@ -6,7 +6,8 @@
  * of words, descriptions and sample sentences.
  * It contains one method. 
  * 
- * @author: Raimi Ademola
+ * @author: Raimi Ademola <ademola.raimi@andela.com>
+ * @copyright: 2016 Andela
  */
 
 namespace Demo\UrbanDictionary;
@@ -14,17 +15,18 @@ namespace Demo\UrbanDictionary;
 class UrbanWords
 {
     public static $data = [
-        'Tight' => [ 
-                        "description" => "When someone performs an awesome task",
+        'Tight'   => [ 
+                        "description"    => "When someone performs an awesome task",
                         "sampleSentence" => "Prosper has finished the curriculum, Tight."
-                    ],
-        'Baller' => [
-                        "descrition" => "A thug that has made it to the big time",
+                     ],
+
+        'Baller'  => [
+                        "descrition"     => "A thug that has made it to the big time",
                         "sampleSentence" => "pain is a part of the game when you are a baller."
-                    ],
+                     ],
 
         'Beer me' => [
-                        "description" => "Besides the obvious give me a beer, it is used to ask    someone to pass or hand an object to you.",
+                        "description"    => "Besides the obvious give me a beer, it is used to ask    someone to pass or hand an object to you.",
                         "sampleSentence" => "Lord, beer me strength"
                      ]
     ];
@@ -33,6 +35,7 @@ class UrbanWords
      * @method data
      * It returns the dictionary
      * 
+     * @param void
      * @return array
      */
      public static function data()
@@ -44,6 +47,7 @@ class UrbanWords
      * @method data
      * It returns the conversion of the key
      * 
+     * @param $word
      * @return string
      */
      public static function formatWord($word)

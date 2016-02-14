@@ -2,7 +2,8 @@
 
 /**
  *
- * @author : Raimi Ademola
+ * @author: Raimi Ademola <ademola.raimi@andela.com>
+ * @copyright: 2016 Andela
  */
 
 namespace Demo\Tests;
@@ -12,9 +13,9 @@ use Demo\UrbanDictionary\RankWord;
 
 Class RankWordTest extends PHPUnit_Framework_TestCase
 {
-	/*
-    * Test to see if an entry can be retrieved.
-    */
+	/**
+     * Test to see if an entry can be retrieved.
+     */
 	public function testRankWord()
 	{
 	    $wordOccurence = new RankWord;

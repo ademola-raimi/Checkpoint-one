@@ -10,7 +10,8 @@
  *
  * @property $UrbanDictionary array;
  *
- * @author: Raimi Ademola
+ * @author: Raimi Ademola <ademola.raimi@andela.com>
+ * @copyright: 2016 Andela
  */
 
 namespace Demo\UrbanDictionary;
@@ -29,9 +30,9 @@ class DictionaryEngine implements Dictionary
      * an associative array and add them
      * into the dictionary
      *
-     * @param $word 
-     * @param @description 
-     * @param @sampleSentence
+     * @param  $word 
+     * @param  $description 
+     * @param  $sampleSentence
      * @return array
      */
     public function add($word, $description, $sampleSentence) 
@@ -40,12 +41,12 @@ class DictionaryEngine implements Dictionary
 
         $word = UrbanWords::formatWord($word);
 
-         $data[$word] = [
+        $data[$word] = [
                           'description' => $description,
                           'sample-sentence' => $sampleSentence,
                     ];           
 
-         return [$word => [$data[$word]]];
+        return [$word => [$data[$word]]];
     }   
 
     /**
@@ -55,7 +56,7 @@ class DictionaryEngine implements Dictionary
      * through the associative array for the key. If the key is found, it retrieves and displays
      * the array. If the key is not found, An error message is thrown.
      *
-     * @param $word
+     * @param  $word
      * @return array
      * @throws UserException
      */

@@ -8,7 +8,8 @@
  * dictionary engine. It also have the parameters of 
  * each function. 
  *
- * @author : Raimi Ademola
+ * @author: Raimi Ademola <ademola.raimi@andela.com>
+ * @copyright: 2016 Andela
  */
 
 namespace Demo\UrbanDictionary;

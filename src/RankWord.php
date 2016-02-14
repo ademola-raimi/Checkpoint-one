@@ -8,7 +8,8 @@
  * descending order of
  * magnitude.
  *
- * @author : Raimi Ademola
+ * @author: Raimi Ademola <ademola.raimi@andela.com>
+ * @copyright: 2016 Andela
  */
 
 namespace Demo\UrbanDictionary;
@@ -31,7 +32,7 @@ class RankWord
      * into an array of distinct words and
      * frequency of occurrence.
      *
-     * @param $input
+     * @param $word
      * @return array
      */
     public function rankWord($word)
