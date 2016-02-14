@@ -6,7 +6,7 @@
 ----------
 
 
-The Urban dictionary is the collation of urban(slangs) words. It is a package that stores meaning of words and their usage in a multi associative array. The platform allows for addition, editing, updating and retrieving. 
+The Urban dictionary is the collation of urban words. It is a package that stores meaning and usage of words in a multi associative array. The package allows for addition, editing, updating and retrieving of words in the dictionary. 
 
 **Design**
 ------
@@ -18,9 +18,10 @@ Classes
 
  - UrbanWords: Contains an array where urban words are stored.
  
- - Crud: Contain methods to add new words, retrieve words, update
-   existing words, and delete words in the urban dictionary.
- - RankWord: Contain methods that rank words based on the number of     times they occurred in the 
+ - DictionaryEngine: Contain methods that add new word, retrieve the whole dictionary, retrieve 
+   word, update existing word, and delete word in the urban dictionary.
+
+ - RankWord: Contain methods that rank words based on the number of times they occurred in the 
    sentence.
 
 **Installation**
@@ -32,7 +33,7 @@ Classes
 
 To install this package, PHP 5.5+ and composer are required. After these requirements have been met, type the following code 
 
-          $ composer require demo/urbandictionary
+        $ composer require demo/urbandictionary
 
 **Usage**
 -----
@@ -49,36 +50,36 @@ The dictionary contains urban words with their meaning and usage
 	
 	    $description = "description";
 	
-	    $sample_sentence = "sample sentence";
+	    $sampleSentence = "sample sentence";
 
-	    Crud::add("word to add", "description", "sample sentence");
+	    UrbanWords::add("word to add", "description", "sample sentence");
 
  - Retrieve a word from the dictionary
 
 	    $word = "word to retrieve";
 	    
-	    Crud::retrieve($word);
+	    UrbanWords::retrieve($word);
 
  - Update a word, its meaning and its sample sentence
  
 		$word = "word to update or edit";
 		 
-		$new_description = "the new description";
+		$newDescription = "the new description";
 		
-		$new_sample_sentence = "the new sample sentence";
+		$newSampleSentence = "the new sample sentence";
 		
-		Crud::update("word", "new description", "new sample sentence");
+		UrbanWords::update("word", "new description", "new sample sentence");
 
  - Delete a word in the urban dictionary
 
 		$word = "word to delete";
-		Crud::delete("word");
+		UrbanWords::delete("word");
 
  - Rank words in a sentence
 
 		$word = "word to rank";
 
-        print_r(RankWord::rank_word($word));
+        RankWord::rankWord($word));
 
 **Testing**
 -------
@@ -89,7 +90,7 @@ The dictionary contains urban words with their meaning and usage
 
 Run the following command in your root directory:
 
-    composer/vendor/bin/phpunit phpunit
+        composer/vendor/bin/phpunit phpunit
 
 
 **Change log**
