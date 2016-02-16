@@ -16,12 +16,12 @@ The Urban dictionary is the collation of urban words. It is a package that store
 
 Classes
 
- - UrbanWords: Contains an array where urban words are stored.
+- UrbanWords: Contains an array where urban words are stored.
  
- - DictionaryEngine: Contain methods that add new word, retrieve the whole dictionary, retrieve 
+- DictionaryEngine: Contain methods that add new word, retrieve the whole dictionary, retrieve 
    word, update existing word, and delete word in the urban dictionary.
 
- - RankWord: Contain methods that rank words based on the number of times they occurred in the 
+- RankWord: Contain methods that rank words based on the number of times they occurred in the 
    sentence.
 
 **Installation**
@@ -44,7 +44,7 @@ To install this package, PHP 5.5+ and composer are required. After these require
 
 The dictionary contains urban words with their meaning and usage
 
- - Add urban words to the dictionary
+- Add urban words to the dictionary
 
 	    $word = "word to add";
 	
@@ -52,15 +52,15 @@ The dictionary contains urban words with their meaning and usage
 	
 	    $sampleSentence = "sample sentence";
 
-	    UrbanWords::add("word to add", "description", "sample sentence");
+	    DictionaryEngine->add("word to add", "description", "sample sentence");
 
- - Retrieve a word from the dictionary
+- Retrieve a word from the dictionary
 
 	    $word = "word to retrieve";
 	    
-	    UrbanWords::retrieve($word);
+	    DictionaryEngine->retrieve($word);
 
- - Update a word, its meaning and its sample sentence
+- Update a word, its meaning and its sample sentence
  
 		$word = "word to update or edit";
 		 
@@ -68,18 +68,18 @@ The dictionary contains urban words with their meaning and usage
 		
 		$newSampleSentence = "the new sample sentence";
 		
-		UrbanWords::update("word", "new description", "new sample sentence");
+		DictionaryEngine->update("word", "new description", "new sample sentence");
 
- - Delete a word in the urban dictionary
+- Delete a word in the urban dictionary
 
 		$word = "word to delete";
-		UrbanWords::delete("word");
+		DictionaryEngine->delete("word");
 
- - Rank words in a sentence
+- Rank words in a sentence
 
 		$word = "word to rank";
 
-        RankWord::rankWord($word));
+        RankWord->rankWord($word));
 
 **Testing**
 -------
@@ -88,9 +88,9 @@ The dictionary contains urban words with their meaning and usage
 ----------
 
 
-Run the following command in your root directory:
+Run the following command in the urban-dictionary directory:
 
-        composer/vendor/bin/phpunit phpunit
+          phpunit
 
 
 **Change log**

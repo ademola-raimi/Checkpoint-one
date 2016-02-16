@@ -11,121 +11,116 @@ use PHPUnit_Framework_TestCase;
 use Demo\UrbanDictionary\UrbanWords;
 use Demo\UrbanDictionary\DictionaryEngine;
 
-
 Class DictionaryEngineTest extends PHPUnit_Framework_TestCase
 {
+    public $crudOperation1;
+    public $crudOperation2;
+    public $crudOperation3;
+    public $dictionaryRetrieveAll;
+    
     /*
-     * Test to see if an entry can be added.
+     * This function setup is used to create objects. Three objects testing for uppercase and 
+     * lowercase and the forth is an instance of the dictionary
+     */
+    public function setUp()
+    {
+        $this->crudOperation1 = new DictionaryEngine("Ginger");
+        $this->crudOperation2 = new DictionaryEngine("GINGER");
+        $this->crudOperation3 = new DictionaryEngine("ginger");
+        $this->data = new UrbanWords();
+    }
+    
+    /*
+     * To test if an entry can be added.
      */
 	public function testAdd()
 	{
-		$arrayAdd = new DictionaryEngine;
-		$result   = $arrayAdd->add("Gay", "homosexual male", "He is a gay");
-	    $this->assertEquals(["Gay" => [
-                           "0" => [
-                           "description" => "homosexual male",
-                           "sample-sentence" => "He is a gay"
-                                        ]
-                                           ]
-		                 ], $result);
+        $dictionaryEntryAdd = $this->crudOperation1->add("When someone is energetic", "Prosper is a ginger developer");
+	    $this->assertEquals(true, $dictionaryEntryAdd);
 
-	    $result   = $arrayAdd->add("GAY", "homosexual male", "He is a gay");
-	    $this->assertEquals(["Gay" => [
-                           "0" => [
-                           "description" => "homosexual male",
-                           "sample-sentence" => "He is a gay"
-                                        ]
-                                           ]
-		                 ], $result);
+	    $dictionaryEntryAdd = $this->crudOperation2->add("When someone is energetic", "Prosper is a ginger developer");
+	    $this->assertEquals(true, $dictionaryEntryAdd);
 
-	    $result   = $arrayAdd->add("gay", "homosexual male", "He is a gay");
-	    $this->assertEquals(["Gay" => [
-                           "0" => [
-                           "description" => "homosexual male",
-                           "sample-sentence" => "He is a gay"
-                                        ]
-                                           ]
-		                 ], $result);
+	    $dictionaryEntryAdd = $this->crudOperation3->add("When someone is energetic", "Prosper is a ginger developer");
+	    $this->assertEquals(true, $dictionaryEntryAdd);
 	}
 
 	/*
-     * Test to see if an entry can be retrieved.
+     * To test if an entry can be retrieved.
      */
 	public function testRetrieve()
-	{
-		$arrayRetrieve  = new DictionaryEngine;
-		
-		$result         = $arrayRetrieve->retrieve("Tight");
-		$this->assertEquals([ 'Tight' => [ 
-                        "description" => "When someone performs an awesome task",
-                        "sampleSentence" => "Prosper has finished the curriculum, Tight."
-                    ]], $result);
+	{	
+        $this->crudOperation1->add("When someone is energetic", "Prosper is a ginger developer");
+        $dictionaryEntryRetrieve         = $this->crudOperation1->retrieve();
+        $this->assertEquals(['Ginger'            => [ 
+                                "description"    => "When someone is energetic",
+                                "sampleSentence" => "Prosper is a ginger developer"]
+                            ], $dictionaryEntryRetrieve);
 
-		$result         = $arrayRetrieve->retrieve("tight");
-		$this->assertEquals([ 'Tight' => [ 
-                        "description" => "When someone performs an awesome task",
-                        "sampleSentence" => "Prosper has finished the curriculum, Tight."
-                    ]], $result);
+        $this->crudOperation2->add("When someone is energetic", "Prosper is a ginger developer");
+        $dictionaryEntryRetrieve         = $this->crudOperation1->retrieve();
+        $this->assertEquals(['Ginger'            => [ 
+                                "description"    => "When someone is energetic",
+                                "sampleSentence" => "Prosper is a ginger developer"]
+                            ], $dictionaryEntryRetrieve);
 
-		$result         = $arrayRetrieve->retrieve("TIGHT");
-		$this->assertEquals([ 'Tight' => [ 
-                        "description" => "When someone performs an awesome task",
-                        "sampleSentence" => "Prosper has finished the curriculum, Tight."
-                    ]], $result);
-	}
+        $this->crudOperation3->add("When someone is energetic", "Prosper is a ginger developer");
+        $dictionaryEntryRetrieve         = $this->crudOperation1->retrieve();
+        $this->assertEquals(['Ginger'            => [ 
+                                "description"    => "When someone is energetic",
+                                "sampleSentence" => "Prosper is a ginger developer"]
+                            ], $dictionaryEntryRetrieve);
+    }
 
-	public function testRetrieveAll()
-	{
-	    $data = UrbanWords::data();
+    public function testRetrieveAll()
+    {
+        $dictionaryRetrieveAll = $this->data->allData();
+	    $dictionaryRetrieve = $this->crudOperation1->retrieveAll();
+	    $this->assertEquals($dictionaryRetrieveAll, $dictionaryRetrieve);
+    }
 
-	    $arrayRetrieveAll = new DictionaryEngine;
-
-	    $result = $arrayRetrieveAll->retrieveAll();
-	    $this->assertEquals($data, $result);
-	}
-
-	/*
-     * Test to see if an entry can be edited or updated.
+    /* 
+     *Test to see if an entry can be edited or updated.
      */
-	public function testUpdate()
-	{
-		$arrayUpdate = new DictionaryEngine;
+    public function testUpdate()
+    {
+        $this->crudOperation1->add("When someone is energetic", "Prosper is a ginger developer");
+        $dictionaryEntryUpdate      = $this->crudOperation1->update("when someone is hyper-active", "Laztopaz is a ginger developer");
+        $this->assertEquals(['Ginger'            => [
+			                    'description'    => 'when someone is hyper-active',
+							    'sampleSentence' =>   'Laztopaz is a ginger developer']
+							], $dictionaryEntryUpdate);
 
-		$result      = $arrayUpdate->update("Tight", "when something is wonderful", "He is tight");
-		$this->assertEquals(['Tight' => ['description' => 'when something is wonderful',
-										  'sampleSentence'=>   'He is tight' 
-							              ]], $result);
+        $this->crudOperation2->add("When someone is energetic", "Prosper is a ginger developer");
+        $dictionaryEntryUpdate      = $this->crudOperation2->update("when someone is hyper-active", "Laztopaz is a ginger developer");
+        $this->assertEquals(['Ginger'            => [
+			                    'description'    => 'when someone is hyper-active',
+							    'sampleSentence' =>   'Laztopaz is a ginger developer']
+							], $dictionaryEntryUpdate);
 
-		$result      = $arrayUpdate->update("tight", "when something is wonderful", "He is tight");
-		$this->assertEquals(['Tight' => ['description' => 'when something is wonderful',
-										  'sampleSentence'=>   'He is tight' 
-							              ]], $result);
+        $this->crudOperation3->add("When someone is energetic", "Prosper is a ginger developer");
+        $dictionaryEntryUpdate      = $this->crudOperation3->update("when someone is hyper-active", "Laztopaz is a ginger developer");
+        $this->assertEquals(['Ginger'            => [
+			                    'description'    => 'when someone is hyper-active',
+							    'sampleSentence' =>   'Laztopaz is a ginger developer']
+							], $dictionaryEntryUpdate);
+    }
 
-		$result      = $arrayUpdate->update("TIGHT", "when something is wonderful", "He is tight");
-		$this->assertEquals(['Tight' => ['description' => 'when something is wonderful',
-										  'sampleSentence'=>   'He is tight' 
-							              ]], $result);
-	}
-
-	/*
+    /*
      * Test to see if an entry can be removed or deleted.
      */
-	  public function testDelete()
-	  {
-	      $data         = UrbanWords::data();
+    public function testDelete()
+    {
+        $this->crudOperation1->add("When someone is energetic", "Prosper is a ginger developer");
+        $dictionaryEntryDelete = $this->crudOperation1->delete();
+        $this->assertEquals(true, $dictionaryEntryDelete);
 
-	      $arrayDelete  = new DictionaryEngine;
+        $this->crudOperation2->add("When someone is energetic", "Prosper is a ginger developer");
+        $dictionaryEntryDelete = $this->crudOperation2->delete();
+        $this->assertEquals(true, $dictionaryEntryDelete);
 
-    	  $result       = $arrayDelete->delete('Tight');
-		  $this->assertNotContains('Tight', $result);
-
-		  $result       = $arrayDelete->delete("tight");
-		  $this->assertNotContains('Tight', $result);
-
-		  $result       = $arrayDelete->delete("TIGHT");
-		  $this->assertNotContains('Tight', $result);
-
-		  $result       = $arrayDelete->delete("Beer me");
-		  $this->assertNotContains('Beer me', $result);
-	}
+        $this->crudOperation3->add("When someone is energetic", "Prosper is a ginger developer");
+        $dictionaryEntryDelete = $this->crudOperation3->delete();
+        $this->assertEquals(true, $dictionaryEntryDelete);
+    }
 }

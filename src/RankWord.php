@@ -36,10 +36,11 @@ class RankWord
      * @return array
      */
     public function rankWord($word)
-	{
-	    $array = explode(" ",$word);
-	    $array = (array_count_values($array));
-	    arsort($array);
-	    return $array; 
-	}
+    {
+        $array = explode(" ",$word);
+        $array = array_count_values($array);
+        arsort($array);
+
+        return $array;
+    }
 }

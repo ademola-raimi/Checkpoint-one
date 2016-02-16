@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class Dictionary: 
+ * Class UrbanWords: 
  * This class contains an associative arrray
  * of words, descriptions and sample sentences.
  * It contains one method. 
@@ -14,14 +14,15 @@ namespace Demo\UrbanDictionary;
 
 class UrbanWords
 {
-    public static $data = [
+    public $dataArray;
+    public  $data = [
         'Tight'   => [ 
                         "description"    => "When someone performs an awesome task",
                         "sampleSentence" => "Prosper has finished the curriculum, Tight."
                      ],
 
         'Baller'  => [
-                        "descrition"     => "A thug that has made it to the big time",
+                        "description"    => "A thug that has made it to the big time",
                         "sampleSentence" => "pain is a part of the game when you are a baller."
                      ],
 
@@ -30,28 +31,28 @@ class UrbanWords
                         "sampleSentence" => "Lord, beer me strength"
                      ]
     ];
-
+    
     /**
-     * @method data
-     * It returns the dictionary
+     * @method constuctor
+     * It sets the array property 
      * 
-     * @param void
-     * @return array
+     * @param Empty
+     * @return Array
      */
-     public static function data()
-     {
-        return self::$data;
-     }
-
-     /**
-     * @method data
-     * It returns the conversion of the key
+    public function __construct()
+    {
+        $this->dataArray = $this->data;
+    }
+    
+    /**
+     * @method allData
+     * It returns the array property
      * 
-     * @param $word
-     * @return string
+     * @param Empty
+     * @return Array
      */
-     public static function formatWord($word)
-     {
-        return ucfirst(strtolower($word));
-     }
+    public function allData()
+    {
+        return $this->dataArray;
+    }
 }

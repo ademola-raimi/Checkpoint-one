@@ -1,7 +1,7 @@
 <?php
 
 /**
- * class UserException
+ * class WordNotFoundException
  * @extends Exception
  *
  * Throws an error if the index for
@@ -16,16 +16,16 @@ namespace Demo\UrbanDictionary;
 
 use Exception;
 
-class UserException extends Exception  
+class WordNotFoundException extends Exception
 {
     public $message;
 
-	/**
+    /**
      * @param string $errorMessage
      * @return void
-	 */
-	public function __construct($errorMessage)
-	{
-		$this->message = $errorMessage;
-	}
+     */
+    public function __construct($errorMessage)
+    {
+	    $this->message = $errorMessage;
+    }
 }

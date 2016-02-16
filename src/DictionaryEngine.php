@@ -8,8 +8,6 @@
  * UrbanWords class. The class also have an interface class 
  * implementation called dictionary
  *
- * @property $UrbanDictionary array;
- *
  * @author: Raimi Ademola <ademola.raimi@andela.com>
  * @copyright: 2016 Andela
  */
@@ -18,11 +16,43 @@ namespace Demo\UrbanDictionary;
 
 use Demo\UrbanDictionary\UrbanWords;
 use Demo\UrbanDictionary\Dictionary;
-use Demo\UrbanDictionary\UserException;
+use Demo\UrbanDictionary\WordNotFoundException;
 
 class DictionaryEngine implements Dictionary
 {
+    private $data;
+    private $dataArray;
+    private $word;
 
+    /**
+     * @method constructor
+     * It takes a parameter and asign it to a class variable 
+     * so that it can be visible across the class. 
+     * 
+     * @param $word
+     * @return string
+     */
+    public function __construct($word)
+    {
+        $this->word = $word;
+        $this->data = new UrbanWords();
+        $this->dataArray = $this->data->allData();
+        $this->formatedWord = $this->formatWord($this->word);
+    }
+
+    /**
+     * @method formatWord
+     * It returns the conversion of the word. The first letter is converted to uppercase
+     * while the other letters are converted to lowercase
+     * 
+     * @param $word
+     * @return string
+     */
+    public function formatWord($word)
+    {
+        return ucfirst(strtolower($word));
+    }
+    
     /**
      *  @method add
      *
@@ -30,23 +60,19 @@ class DictionaryEngine implements Dictionary
      * an associative array and add them
      * into the dictionary
      *
-     * @param  $word 
      * @param  $description 
      * @param  $sampleSentence
      * @return array
      */
-    public function add($word, $description, $sampleSentence) 
+    public function add($description, $sampleSentence) 
     {
-        $data = UrbanWords::data();
 
-        $word = UrbanWords::formatWord($word);
+        $this->dataArray[$this->formatedWord] = [
+            'description' => $description,
+            'sampleSentence' => $sampleSentence,
+        ];           
 
-        $data[$word] = [
-                          'description' => $description,
-                          'sample-sentence' => $sampleSentence,
-                    ];           
-
-        return [$word => [$data[$word]]];
+        return true;
     }   
 
     /**
@@ -54,22 +80,18 @@ class DictionaryEngine implements Dictionary
      *
      * This method takes a string parameter, it uses the parameter to search
      * through the associative array for the key. If the key is found, it retrieves and displays
-     * the array. If the key is not found, An error message is thrown.
+     * the array. If the key is not found, WordNotFoundException is thrown.
      *
-     * @param  $word
-     * @return array
-     * @throws UserException
+     * @param  Empty
+     * @return Array
+     * @throws WordNotFoundException
      */
-    public function retrieve($word)
+    public function retrieve()
     {
-        $data = UrbanWords::data();
-
-        $word = UrbanWords::formatWord($word);
-
-        if (array_key_exists($word, $data)) {
-            return [$word =>$data[$word]];
+        if (array_key_exists($this->formatedWord, $this->dataArray)) {
+            return [$this->formatedWord =>$this->dataArray[$this->formatedWord]];
         } else {
-            throw new UserException("The word '" . $word . "' cannot be found in the dictionary"); 
+            throw new WordNotFoundException("The word '" . $this->word . "' cannot be found in the dictionary"); 
         }
     }
     
@@ -78,70 +100,62 @@ class DictionaryEngine implements Dictionary
      *
      * This method takes no parameter. When called it returns the whole dictionary
      *
-     * @param void
-     * @return array
+     * @param Empty
+     * @return Array
      */
     public function retrieveAll()
-    {
-        $data = UrbanWords::data();
-        
-        return $data;    
+    { 
+        return $this->dataArray;   
     }   
 
     /**
      *  @method update
      *
-     * This method takes three parameters: @word, @DictionaryEngineand @sample_sentence.
-     * It uses the @word to search through the associative array for the key. 
-     * If the key is found, it replaces @DictionaryEnginewith "description" and 
-     * @new_sample_sentence with "sample_sentence". If the key is not, an error message is thrown
+     * This method takes two parameters: @newDescription and @sampleSentence.
+     * It uses the @word to search through the associative array for the word. 
+     * If the word is found, it replaces @newDescription with "description" and 
+     * @newSampleSentence with "sampleSentence". If the word is not, WordNotFoundException is thrown.
      *
-     * @param $word
-     * @param @description 
-     * @param @sampleSentence
-     * @return array
-     * @throws UserException
+     * @param  @description 
+     * @param  @sampleSentence
+     * @return Array
+     * @throws WordNotFoundException
      */
-    public function update($word, $newDescription, $newSampleSentence)
+    public function update($newDescription, $newSampleSentence)
     {
-        $data = UrbanWords::data();
-
-        $word = UrbanWords::formatWord($word);
-
-        if (array_key_exists($word, $data)) {
-            $data[$word] = [
+        if (array_key_exists($this->formatedWord, $this->dataArray)) {
+            $this->dataArray[$this->formatedWord] = [
                 'description' => $newDescription,
                 'sampleSentence' => $newSampleSentence
             ];
-            return [$word => $data[$word]];
+
+            return [$this->formatedWord => $this->dataArray[$this->formatedWord]];
+
         } else {
-            throw new UserException("The word " . $word . " cannot be found in the dictionary"); 
+            throw new WordNotFoundException("The word " . $this->formatedWord . " cannot be found in the dictionary"); 
         }  
     }
 
     /**
      *  @method delete
      *
-     * This method takes a string parameter. It uses the parameter to search
-     * the associative arrayfor the key. If found, It deletes the entire array
-     * in the dictionary. If the key is not found, an error message is thrown.
+     * This method takes no parameter. It searches for the word in the 
+     * associative array. If found, It deletes the word, description and sample sentence
+     * in the dictionary. If the word is not found, WordNotFoundException is thrown.
      *
-     * @param $word
-     * @throws UserException
      * @return Array
+     * @throws UserException 
      */
-     public function delete($word)
-     {
-        $data = UrbanWords::data();
+    public function delete()
+    {
+        if (array_key_exists($this->formatedWord, $this->dataArray)) {
+            unset($this->dataArray[$this->formatedWord]);
 
-        $word = UrbanWords::formatWord($word);
+            return true;
 
-        if (array_key_exists($word, $data)) {
-            unset($data[$word]);
-            return $data;
-        }else {
-            throw new Exception($word . "cannot be found in the dictionary");
+        } else {
+            throw new WordNotFoundException("The word " . $this->formatedWord . " cannot be found in the dictionary");
         }
-     }
+    }
 }
                

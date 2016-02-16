@@ -6,43 +6,41 @@ use Demo\UrbanDictionary\Dictonary;
 use Demo\UrbanDictionary\RankWord;
 use Demo\UrbanDictionary\UrbanWords;
 use Demo\UrbanDictionary\DictionaryEngine;
-use Demo\UrbanDictionary\UserException;
+use Demo\UrbanDictionary\WordNotFoundException;
 
 	 
-	  $newWord = new DictionaryEngine;
+	  $newWord = new DictionaryEngine('Ginger');
 
-	    //$result = $newWord->add("ginger", "when someone has energy", "You need ginger in your cp1");
-	   //var_dump($result);
+	     //echo $newWord->add("when someone has energy", "You need ginger in your cp1");
+	     
+	  //$newWord->add("demo", "short version of Ademola", "Demo is a rockstar programmer");
+	  //var_dump($result);
 
-	  // $result = $newWord->add("demo", "short version of Ademola", "Demo is a rockstar programmer");
-	  // var_dump($result);
+	  // $newWord->add("kusH", "getting high on weed", "Doyin went to kush");
+	  // //print_r($result);
+	  // print_r($newWord->retrieveAll());
 
-	  // $result = $newWord->add("kush", "getting high on weed", "Doyin went to kush");
-	  // print_r($result);
-
-
-	   try{
-	   	$result = $newWord->update('tght', 'when something is wonderful', 'Prosper is Tight');
-		  print_r($result);
-	   } catch(UserException $e) {
-	   	print($e->getMessage());
-	   }
-
+	 
 	  // $result = $newWord->retrieveAll();
 	  // print_r($result);
 	
+	  try {
+	   echo $newWord->delete();
+	}catch(WordNotFoundException $e) {
+		print($e->getMessage());
+	}
+	     
 
 
-
-	   //try {
-	 	
+	   // try {
+	 		// $result = $newWord->delete('Baller');
 	   	
-	   //} catch(UserException $e) {
-	   	//print($e->getMessage());
-	   //}
-	   // $result = $newWord->delete('Baller');
-	   //  $result = $newWord->delete('tight');
-	   // print_r($result);
+	   // } catch(WordNotFoundException $e) {
+	   // 	print($e->getMessage());
+	   // }
+	   
+	    //print_r($newWord->delete());
+	  
 // $wordFormat = "I love playing ball";
 // echo lcfirst(strtoupper($wordFormat));
 	  
