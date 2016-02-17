@@ -44,42 +44,32 @@ To install this package, PHP 5.5+ and composer are required. After these require
 
 The dictionary contains urban words with their meaning and usage
 
-- Add urban words to the dictionary
-
-	    $word = "word to add";
-	
-	    $description = "description";
-	
-	    $sampleSentence = "sample sentence";
-
-	    DictionaryEngine->add("word to add", "description", "sample sentence");
-
-- Retrieve a word from the dictionary
-
-	    $word = "word to retrieve";
-	    
-	    DictionaryEngine->retrieve($word);
-
-- Update a word, its meaning and its sample sentence
- 
-		$word = "word to update or edit";
+ - Create  a crudOperation instance
 		 
-		$newDescription = "the new description";
+		 $crudOperation = new DictionaryEngine($word);
+		 
+ - Add urban words to the dictionary
+
+			   $dictionaryEntryAdd = crudOperation->add( 'description', 'sampleSentence');
+
+ - Retrieve a word from the dictionary
+	    
+			   $dictionaryEntryRetrieve = crudOperation->retrieve( 'description', 'sampleSentence');
+
+ - Update a word, its meaning and its sample sentence
 		
-		$newSampleSentence = "the new sample sentence";
+			 $dictionaryEntryUpdate = crudOperation->update( 'description', 'sampleSentence');
+
+ - Delete a word in the urban dictionary
+
+			 $dictionaryEntryDelete = crudOperation->delete( 'description', 'sampleSentence');
+
+ - Rank words in a sentence
+	 - create a wordOccurence instance
 		
-		DictionaryEngine->update("word", "new description", "new sample sentence");
-
-- Delete a word in the urban dictionary
-
-		$word = "word to delete";
-		DictionaryEngine->delete("word");
-
-- Rank words in a sentence
-
-		$word = "word to rank";
-
-        RankWord->rankWord($word));
+			$wordOccurence = new RankWord;
+	
+	        wordOccurence->rankWord($word));
 
 **Testing**
 -------
