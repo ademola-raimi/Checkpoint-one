@@ -66,12 +66,11 @@ class DictionaryEngine implements Dictionary
      */
     public function add($description, $sampleSentence) 
     {
-
         $this->dataArray[$this->formatedWord] = [
             'description' => $description,
             'sampleSentence' => $sampleSentence,
         ];           
-
+        
         return true;
     }   
 
@@ -89,7 +88,9 @@ class DictionaryEngine implements Dictionary
     public function retrieve()
     {
         if (array_key_exists($this->formatedWord, $this->dataArray)) {
+
             return [$this->formatedWord =>$this->dataArray[$this->formatedWord]];
+
         } else {
             throw new WordNotFoundException("The word '" . $this->word . "' cannot be found in the dictionary"); 
         }

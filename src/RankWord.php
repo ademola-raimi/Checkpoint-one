@@ -14,7 +14,7 @@
 
 namespace Demo\UrbanDictionary;
 
-class RankWord
+Class RankWord
 {
     /**
      * @method rankWord
@@ -40,7 +40,7 @@ class RankWord
         $array = explode(" ",$word);
         $array = array_count_values($array);
         arsort($array);
-
+        
         return $array;
     }
 }
