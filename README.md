@@ -46,23 +46,27 @@ The dictionary contains urban words with their meaning and usage
 
  - Create  a crudOperation instance
 		 
-		 $crudOperation = new DictionaryEngine($word);
+		 $crudOperation = new DictionaryEngine();
 		 
  - Add urban words to the dictionary
 
-			   $dictionaryEntryAdd = crudOperation->add('description', 'sampleSentence');
+			   $dictionaryEntryAdd = crudOperation->add('word','description', 'sampleSentence');
 
  - Retrieve a word from the dictionary
 	    
-			   $dictionaryEntryRetrieve = crudOperation->retrieve();
+			   $dictionaryEntryRetrieve = crudOperation->retrieve('word');
+
+ - Retrieve the whole dictionary
+	    
+			   $dictionaryRetrieveAll = crudOperation->retrieveAll();			   
 
  - Update a word, its meaning and its sample sentence
 		
-			 $dictionaryEntryUpdate = crudOperation->update('description', 'sampleSentence');
+			 $dictionaryEntryUpdate = crudOperation->update('word' newDescription', 'newSampleSentence');
 
  - Delete a word in the urban dictionary
 
-			 $dictionaryEntryDelete = crudOperation->delete();
+			 $dictionaryEntryDelete = crudOperation->delete('word');
 
  - Rank words in a sentence
 	 - create a wordOccurence instance

@@ -14,8 +14,7 @@ namespace Demo\UrbanDictionary;
 
 class UrbanWords
 {
-    public $dataArray;
-    public  $data = [
+    public static $data = [
         'Tight'   => [ 
                         "description"    => "When someone performs an awesome task",
                         "sampleSentence" => "Prosper has finished the curriculum, Tight."
@@ -39,20 +38,8 @@ class UrbanWords
      * @param Empty
      * @return Array
      */
-    public function __construct()
+    public static function getData()
     {
-        $this->dataArray = $this->data;
-    }
-    
-    /**
-     * @method allData
-     * It returns the array property
-     * 
-     * @param Empty
-     * @return Array
-     */
-    public function allData()
-    {
-        return $this->dataArray;
+        return self::$data;
     }
 }

@@ -21,38 +21,33 @@ use Demo\UrbanDictionary\WordNotFoundException;
 class DictionaryEngine implements Dictionary
 {
     private $data;
-    private $dataArray;
-    private $word;
 
     /**
      * @method constructor
-     * It takes a parameter and asign it to a class variable 
-     * so that it can be visible across the class. 
+     * The constructor method gets the array data from UrbanWords class
      * 
-     * @param $word
-     * @return string
+     * @param Empty
+     * @return Empty
      */
-    public function __construct($word)
+    public function __construct()
     {
-        $this->word = $word;
-        $this->data = new UrbanWords();
-        $this->dataArray = $this->data->allData();
-        $this->formatedWord = $this->formatWord($this->word);
+        $this->data = UrbanWords::getData();
     }
 
     /**
-     * @method formatWord
-     * It returns the conversion of the word. The first letter is converted to uppercase
-     * while the other letters are converted to lowercase
+     * @method getFormatWord
+     * This method takes a word (string) as parameter. Firstly, It convert 
+     * the word into lowercase and then secondly convert the first letter
+     * into uppercase
      * 
-     * @param $word
-     * @return string
+     * @param String
+     * @return String
      */
-    public function formatWord($word)
+    public function getFormatWord($word)
     {
-        return ucfirst(strtolower($word));
+       return ucfirst(strtolower($word));   
     }
-    
+
     /**
      *  @method add
      *
@@ -64,13 +59,13 @@ class DictionaryEngine implements Dictionary
      * @param  $sampleSentence
      * @return array
      */
-    public function add($description, $sampleSentence) 
+    public function add($word, $description, $sampleSentence) 
     {
-        $this->dataArray[$this->formatedWord] = [
+        $this->data[self::getFormatWord($word)] = [
             'description' => $description,
             'sampleSentence' => $sampleSentence,
         ];           
-        
+
         return true;
     }   
 
@@ -85,14 +80,14 @@ class DictionaryEngine implements Dictionary
      * @return Array
      * @throws WordNotFoundException
      */
-    public function retrieve()
+    public function retrieve($word)
     {
-        if (array_key_exists($this->formatedWord, $this->dataArray)) {
+        if (array_key_exists(self::getFormatWord($word), $this->data)) {
 
-            return [$this->formatedWord =>$this->dataArray[$this->formatedWord]];
+            return [self::getFormatWord($word) =>$this->data[self::getFormatWord($word)]];
 
         } else {
-            throw new WordNotFoundException("The word '" . $this->word . "' cannot be found in the dictionary"); 
+            throw new WordNotFoundException("The word '" . self::getFormatWord($word) . "' cannot be found in the dictionary"); 
         }
     }
     
@@ -106,7 +101,7 @@ class DictionaryEngine implements Dictionary
      */
     public function retrieveAll()
     { 
-        return $this->dataArray;   
+        return $this->data;   
     }   
 
     /**
@@ -122,18 +117,18 @@ class DictionaryEngine implements Dictionary
      * @return Array
      * @throws WordNotFoundException
      */
-    public function update($newDescription, $newSampleSentence)
+    public function update($word, $newDescription, $newSampleSentence)
     {
-        if (array_key_exists($this->formatedWord, $this->dataArray)) {
-            $this->dataArray[$this->formatedWord] = [
+        if (array_key_exists(self::getFormatWord($word), $this->data)) {
+            $this->data[self::getFormatWord($word)] = [
                 'description' => $newDescription,
                 'sampleSentence' => $newSampleSentence
             ];
 
-            return [$this->formatedWord => $this->dataArray[$this->formatedWord]];
+            return [self::getFormatWord($word) => $this->data[self::getFormatWord($word)]];
 
         } else {
-            throw new WordNotFoundException("The word " . $this->formatedWord . " cannot be found in the dictionary"); 
+            throw new WordNotFoundException("The word " . self::getFormatWord($word) . " cannot be found in the dictionary"); 
         }  
     }
 
@@ -147,15 +142,15 @@ class DictionaryEngine implements Dictionary
      * @return Array
      * @throws UserException 
      */
-    public function delete()
+    public function delete($word)
     {
-        if (array_key_exists($this->formatedWord, $this->dataArray)) {
-            unset($this->dataArray[$this->formatedWord]);
+        if (array_key_exists(self::getFormatWord($word), $this->data)) {
+            unset($this->data[self::getFormatWord($word)]);
 
             return true;
 
         } else {
-            throw new WordNotFoundException("The word " . $this->formatedWord . " cannot be found in the dictionary");
+            throw new WordNotFoundException("The word " . self::getFormatWord($word) . " cannot be found in the dictionary");
         }
     }
 }
