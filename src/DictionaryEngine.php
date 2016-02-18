@@ -22,7 +22,10 @@ class DictionaryEngine implements Dictionary
 {
     private $data;
     private $dataArray;
-    private $word;
+    public $word;
+    //public $words;
+
+
 
     /**
      * @method constructor
@@ -32,12 +35,13 @@ class DictionaryEngine implements Dictionary
      * @param $word
      * @return string
      */
-    public function __construct($word)
+    public function __construct()
     {
-        $this->word = $word;
+        $this->word = $this->word;
         $this->data = new UrbanWords();
         $this->dataArray = $this->data->allData();
-        $this->formatedWord = $this->formatWord($this->word);
+        $this->formatedWord = $this->formatedWord();
+        echo $this->word;
     }
 
     /**
@@ -48,9 +52,14 @@ class DictionaryEngine implements Dictionary
      * @param $word
      * @return string
      */
-    public function formatWord($word)
+    public function formatWord()
     {
-        return ucfirst(strtolower($word));
+        return ucfirst(strtolower($this->word));
+    }
+
+    public function getFormatedWord()
+    {
+        return  $this->formatedWord = $this->formatWord();
     }
     
     /**
@@ -64,7 +73,7 @@ class DictionaryEngine implements Dictionary
      * @param  $sampleSentence
      * @return array
      */
-    public function add($description, $sampleSentence) 
+    public function add($word, $description, $sampleSentence) 
     {
         $this->dataArray[$this->formatedWord] = [
             'description' => $description,
@@ -85,7 +94,7 @@ class DictionaryEngine implements Dictionary
      * @return Array
      * @throws WordNotFoundException
      */
-    public function retrieve()
+    public function retrieve($word)
     {
         if (array_key_exists($this->formatedWord, $this->dataArray)) {
 
@@ -122,7 +131,7 @@ class DictionaryEngine implements Dictionary
      * @return Array
      * @throws WordNotFoundException
      */
-    public function update($newDescription, $newSampleSentence)
+    public function update($word, $newDescription, $newSampleSentence)
     {
         if (array_key_exists($this->formatedWord, $this->dataArray)) {
             $this->dataArray[$this->formatedWord] = [
@@ -147,7 +156,7 @@ class DictionaryEngine implements Dictionary
      * @return Array
      * @throws UserException 
      */
-    public function delete()
+    public function delete($word)
     {
         if (array_key_exists($this->formatedWord, $this->dataArray)) {
             unset($this->dataArray[$this->formatedWord]);
