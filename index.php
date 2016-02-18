@@ -9,7 +9,7 @@ use Demo\UrbanDictionary\DictionaryEngine;
 use Demo\UrbanDictionary\WordNotFoundException;
 
 	 
-	  $newWord = new DictionaryEngine();
+	  $newWord = new DictionaryEngine('Ginger');
 
 	     //echo $newWord->add("when someone has energy", "You need ginger in your cp1");
 	     
@@ -25,7 +25,7 @@ use Demo\UrbanDictionary\WordNotFoundException;
 	  // print_r($result);
 	
 	  try {
-	   echo $newWord->delete('Tight');
+	   echo $newWord->delete();
 	}catch(WordNotFoundException $e) {
 		print($e->getMessage());
 	}
