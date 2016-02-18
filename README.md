@@ -54,7 +54,7 @@ The dictionary contains urban words with their meaning and usage
 
  - Retrieve a word from the dictionary
 	    
-			   $dictionaryEntryRetrieve = crudOperation->retrieve( 'description', 'sampleSentence');
+			   $dictionaryEntryRetrieve = crudOperation->retrieve();
 
  - Update a word, its meaning and its sample sentence
 		
@@ -62,7 +62,7 @@ The dictionary contains urban words with their meaning and usage
 
  - Delete a word in the urban dictionary
 
-			 $dictionaryEntryDelete = crudOperation->delete( 'description', 'sampleSentence');
+			 $dictionaryEntryDelete = crudOperation->delete();
 
  - Rank words in a sentence
 	 - create a wordOccurence instance
