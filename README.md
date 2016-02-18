@@ -50,7 +50,7 @@ The dictionary contains urban words with their meaning and usage
 		 
  - Add urban words to the dictionary
 
-			   $dictionaryEntryAdd = crudOperation->add( 'description', 'sampleSentence');
+			   $dictionaryEntryAdd = crudOperation->add('description', 'sampleSentence');
 
  - Retrieve a word from the dictionary
 	    
@@ -58,7 +58,7 @@ The dictionary contains urban words with their meaning and usage
 
  - Update a word, its meaning and its sample sentence
 		
-			 $dictionaryEntryUpdate = crudOperation->update( 'description', 'sampleSentence');
+			 $dictionaryEntryUpdate = crudOperation->update('description', 'sampleSentence');
 
  - Delete a word in the urban dictionary
 
