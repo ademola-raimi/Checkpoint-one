@@ -26,8 +26,6 @@ class DictionaryEngine implements Dictionary
      * @method constructor
      * The constructor method gets the array data from UrbanWords class
      * 
-     * @param Empty
-     * @return Empty
      */
     public function __construct()
     {
@@ -40,7 +38,7 @@ class DictionaryEngine implements Dictionary
      * the word into lowercase and then secondly convert the first letter
      * into uppercase
      * 
-     * @param String
+     * @param $word
      * @return String
      */
     public function getFormatWord($word)
@@ -55,9 +53,10 @@ class DictionaryEngine implements Dictionary
      * an associative array and add them
      * into the dictionary
      *
+     * @param  $word 
      * @param  $description 
      * @param  $sampleSentence
-     * @return array
+     * @return Array
      */
     public function add($word, $description, $sampleSentence) 
     {
@@ -76,7 +75,7 @@ class DictionaryEngine implements Dictionary
      * through the associative array for the key. If the key is found, it retrieves and displays
      * the array. If the key is not found, WordNotFoundException is thrown.
      *
-     * @param  Empty
+     * @param  @word
      * @return Array
      * @throws WordNotFoundException
      */
@@ -96,7 +95,6 @@ class DictionaryEngine implements Dictionary
      *
      * This method takes no parameter. When called it returns the whole dictionary
      *
-     * @param Empty
      * @return Array
      */
     public function retrieveAll()
@@ -112,6 +110,7 @@ class DictionaryEngine implements Dictionary
      * If the word is found, it replaces @newDescription with "description" and 
      * @newSampleSentence with "sampleSentence". If the word is not, WordNotFoundException is thrown.
      *
+     * @param  @word
      * @param  @description 
      * @param  @sampleSentence
      * @return Array
@@ -139,6 +138,7 @@ class DictionaryEngine implements Dictionary
      * associative array. If found, It deletes the word, description and sample sentence
      * in the dictionary. If the word is not found, WordNotFoundException is thrown.
      *
+     * @param $word
      * @return Array
      * @throws UserException 
      */
