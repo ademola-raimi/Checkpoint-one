@@ -32,8 +32,8 @@ class UrbanWords
     ];
     
     /**
-     * @method constuctor
-     * It sets the array property 
+     * @method getData
+     * It gets the array property 
      * 
      * @param Empty
      * @return Array
