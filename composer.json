@@ -1,4 +1,17 @@
 {
+    "name": "demo/urbandictionary",
+    "description": "A package that helps in managing urban words (slang)",
+    "keywords": ["urban words"],
+    "homepage": "https://github.com/andela-araimi/Checkpoint-one.git",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Raimi Ademola",
+            "email": "ademolaraimi.nig@gmail.com",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "php":          ">=5.5.9",
         "satooshi/php-coveralls": "^1.0"
