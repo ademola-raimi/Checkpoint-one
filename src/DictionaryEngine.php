@@ -38,7 +38,7 @@ class DictionaryEngine implements Dictionary
      * the word into lowercase and then secondly convert the first letter
      * into uppercase
      * 
-     * @param $word
+     * @param string $word The string get formated by the method
      * @return String
      */
     public function getFormatWord($word)
@@ -53,9 +53,9 @@ class DictionaryEngine implements Dictionary
      * an associative array and add them
      * into the dictionary
      *
-     * @param  $word 
-     * @param  $description 
-     * @param  $sampleSentence
+     * @param  string $word The array key to add  
+     * @param  string $description The array description to add 
+     * @param  string $sampleSentence The array sample sentence to add
      * @return Array
      */
     public function add($word, $description, $sampleSentence) 
@@ -75,7 +75,7 @@ class DictionaryEngine implements Dictionary
      * through the associative array for the key. If the key is found, it retrieves and displays
      * the array. If the key is not found, WordNotFoundException is thrown.
      *
-     * @param  @word
+     * @param  string $word The array key to retrieve
      * @return Array
      * @throws WordNotFoundException
      */
@@ -110,9 +110,9 @@ class DictionaryEngine implements Dictionary
      * If the word is found, it replaces @newDescription with "description" and 
      * @newSampleSentence with "sampleSentence". If the word is not, WordNotFoundException is thrown.
      *
-     * @param  @word
-     * @param  @description 
-     * @param  @sampleSentence
+     * @param  string $word The array key to update
+     * @param  string $description The array description to update 
+     * @param  string $sampleSentence The array sample sentence to update
      * @return Array
      * @throws WordNotFoundException
      */
@@ -138,7 +138,7 @@ class DictionaryEngine implements Dictionary
      * associative array. If found, It deletes the word, description and sample sentence
      * in the dictionary. If the word is not found, WordNotFoundException is thrown.
      *
-     * @param $word
+     * @param string $word The array key to delete
      * @return Array
      * @throws UserException 
      */

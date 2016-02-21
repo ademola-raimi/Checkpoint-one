@@ -32,7 +32,7 @@ Class RankWord
      * into an array of distinct words and
      * frequency of occurrence.
      *
-     * @param $word
+     * @param string $word The string to rank
      * @return array
      */
     public function rankWord($word)

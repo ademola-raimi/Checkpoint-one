@@ -14,7 +14,7 @@ namespace Demo\UrbanDictionary;
 
 class UrbanWords
 {
-    public static $data = [
+    private static $data = [
         'Tight'   => [ 
                         "description"    => "When someone performs an awesome task",
                         "sampleSentence" => "Prosper has finished the curriculum, Tight."
@@ -35,7 +35,6 @@ class UrbanWords
      * @method getData
      * It gets the array property 
      * 
-     * @param Empty
      * @return Array
      */
     public static function getData()

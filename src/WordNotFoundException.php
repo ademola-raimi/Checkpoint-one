@@ -21,8 +21,7 @@ class WordNotFoundException extends Exception
     public $message;
 
     /**
-     * @param string $errorMessage
-     * @return void
+     * @param string $errorMessage The message from the Exception
      */
     public function __construct($errorMessage)
     {
