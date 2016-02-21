@@ -111,8 +111,8 @@ class DictionaryEngine implements Dictionary
      * @newSampleSentence with "sampleSentence". If the word is not, WordNotFoundException is thrown.
      *
      * @param  string $word The array key to update
-     * @param  string $description The array description to update 
-     * @param  string $sampleSentence The array sample sentence to update
+     * @param  string $newDescription The array description to update 
+     * @param  string $newSampleSentence The array sample sentence to update
      * @return Array
      * @throws WordNotFoundException
      */
