@@ -83,7 +83,7 @@ class DictionaryEngine implements Dictionary
     {
         if (array_key_exists(self::getFormatWord($word), $this->data)) {
 
-            return [self::getFormatWord($word) =>$this->data[self::getFormatWord($word)]];
+            return [self::getFormatWord($word) => $this->data[self::getFormatWord($word)]];
 
         } else {
             throw new WordNotFoundException("The word '" . self::getFormatWord($word) . "' cannot be found in the dictionary"); 

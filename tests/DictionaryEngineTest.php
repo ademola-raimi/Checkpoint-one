@@ -10,10 +10,11 @@ namespace Demo\Tests;
 use PHPUnit_Framework_TestCase;
 use Demo\UrbanDictionary\UrbanWords;
 use Demo\UrbanDictionary\DictionaryEngine;
+use Demo\UrbanDictionary\WordNotFoundException;
 
 Class DictionaryEngineTest extends PHPUnit_Framework_TestCase
 {
-    public $crudOperation;
+    public $dictionaryManager;
     public $dictionaryRetrieveAll;
     
     /*
@@ -22,7 +23,7 @@ Class DictionaryEngineTest extends PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->crudOperation = new DictionaryEngine();
+        $this->dictionaryManager = new DictionaryEngine();
         $this->data = UrbanWords::getData();
     }
     
@@ -31,13 +32,13 @@ Class DictionaryEngineTest extends PHPUnit_Framework_TestCase
      */
 	public function testAdd()
 	{
-        $dictionaryEntryAdd = $this->crudOperation->add("Ginger", "When someone is energetic", "Prosper is a ginger developer");
+        $dictionaryEntryAdd = $this->dictionaryManager->add("Ginger", "When someone is energetic", "Prosper is a ginger developer");
 	    $this->assertEquals(true, $dictionaryEntryAdd);
 
-	    $dictionaryEntryAdd = $this->crudOperation->add("ginger", "When someone is energetic", "Prosper is a ginger developer");
+	    $dictionaryEntryAdd = $this->dictionaryManager->add("ginger", "When someone is energetic", "Prosper is a ginger developer");
 	    $this->assertEquals(true, $dictionaryEntryAdd);
 
-	    $dictionaryEntryAdd = $this->crudOperation->add("GINGER", "When someone is energetic", "Prosper is a ginger developer");
+	    $dictionaryEntryAdd = $this->dictionaryManager->add("GINGER", "When someone is energetic", "Prosper is a ginger developer");
 	    $this->assertEquals(true, $dictionaryEntryAdd);
 	}
 
@@ -46,21 +47,21 @@ Class DictionaryEngineTest extends PHPUnit_Framework_TestCase
      */
 	 public function testRetrieve()
 	 {	
-        $this->crudOperation->add("Ginger", "When someone is energetic", "Prosper is a ginger developer");
+        $this->dictionaryManager->add("Ginger", "When someone is energetic", "Prosper is a ginger developer");
 
-        $dictionaryEntryRetrieve         = $this->crudOperation->retrieve("Ginger");
+        $dictionaryEntryRetrieve         = $this->dictionaryManager->retrieve("Ginger");
         $this->assertEquals(['Ginger'            => [ 
                                 "description"    => "When someone is energetic",
                                 "sampleSentence" => "Prosper is a ginger developer"]
                             ], $dictionaryEntryRetrieve);
 
-        $dictionaryEntryRetrieve         = $this->crudOperation->retrieve("ginger");
+        $dictionaryEntryRetrieve         = $this->dictionaryManager->retrieve("ginger");
         $this->assertEquals(['Ginger'            => [ 
                                 "description"    => "When someone is energetic",
                                 "sampleSentence" => "Prosper is a ginger developer"]
                             ], $dictionaryEntryRetrieve);
 
-        $dictionaryEntryRetrieve         = $this->crudOperation->retrieve("GINGER");
+        $dictionaryEntryRetrieve         = $this->dictionaryManager->retrieve("GINGER");
         $this->assertEquals(['Ginger'            => [ 
                                 "description"    => "When someone is energetic",
                                 "sampleSentence" => "Prosper is a ginger developer"]
@@ -69,7 +70,7 @@ Class DictionaryEngineTest extends PHPUnit_Framework_TestCase
 
     public function testRetrieveAll()
     {
-	    $dictionaryRetrieveAll = $this->crudOperation->retrieveAll();
+	    $dictionaryRetrieveAll = $this->dictionaryManager->retrieveAll();
 	    $this->assertEquals($this->data, $dictionaryRetrieveAll);
     }
 
@@ -78,21 +79,21 @@ Class DictionaryEngineTest extends PHPUnit_Framework_TestCase
      */
     public function testUpdate()
     {
-        $this->crudOperation->add("Ginger", "When someone is energetic", "Prosper is a ginger developer");
+        $this->dictionaryManager->add("Ginger", "When someone is energetic", "Prosper is a ginger developer");
 
-        $dictionaryEntryUpdate      = $this->crudOperation->update("Ginger", "when someone is hyper-active", "Laztopaz is a ginger developer");
+        $dictionaryEntryUpdate      = $this->dictionaryManager->update("Ginger", "when someone is hyper-active", "Laztopaz is a ginger developer");
         $this->assertEquals(['Ginger'            => [
 			                    'description'    => 'when someone is hyper-active',
 							    'sampleSentence' =>   'Laztopaz is a ginger developer']
 							], $dictionaryEntryUpdate);
 
-        $dictionaryEntryUpdate      = $this->crudOperation->update("ginger", "when someone is hyper-active", "Laztopaz is a ginger developer");
+        $dictionaryEntryUpdate      = $this->dictionaryManager->update("ginger", "when someone is hyper-active", "Laztopaz is a ginger developer");
         $this->assertEquals(['Ginger'            => [
 			                    'description'    => 'when someone is hyper-active',
 							    'sampleSentence' =>   'Laztopaz is a ginger developer']
 							], $dictionaryEntryUpdate);
 
-        $dictionaryEntryUpdate      = $this->crudOperation->update("GINGER", "when someone is hyper-active", "Laztopaz is a ginger developer");
+        $dictionaryEntryUpdate      = $this->dictionaryManager->update("GINGER", "when someone is hyper-active", "Laztopaz is a ginger developer");
         $this->assertEquals(['Ginger'            => [
 			                    'description'    => 'when someone is hyper-active',
 							    'sampleSentence' =>   'Laztopaz is a ginger developer']
@@ -104,13 +105,15 @@ Class DictionaryEngineTest extends PHPUnit_Framework_TestCase
      */
     public function testDelete()
     {
-        $this->crudOperation->delete("Baller");
+        $this->dictionaryManager->delete("Baller");
         $this->assertNotContains('Baller', $this->data);
+    }
 
-        $dictionaryEntryDelete = $this->crudOperation->delete("tight");
-        $this->assertNotContains('Tight', $this->data);
-
-        $dictionaryEntryDelete = $this->crudOperation->delete("BEER ME");
-        $this->assertNotContains('Beer me', $this->data);
+    /**
+     * @expectedException Demo\UrbanDictionary\WordNotfoundException
+     */
+    public function testDeleteWordNotFoundException()
+    {
+        $this->dictionaryManager->delete("deer");
     }
 }

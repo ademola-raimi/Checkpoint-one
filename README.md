@@ -44,36 +44,36 @@ To install this package, PHP 5.5+ and composer are required. After these require
 
 The dictionary contains urban words with their meaning and usage
 
- - Create  a crudOperation instance
+ - Create  a dictionaryManager instance
 		 
-		 $crudOperation = new DictionaryEngine();
+		 $dictionaryManager = new DictionaryEngine();
 		 
  - Add urban words to the dictionary
 
-			   $dictionaryEntryAdd = crudOperation->add('word','description', 'sampleSentence');
+			   $dictionaryManager->add('word', 'description', 'sampleSentence'); // This returns true
 
  - Retrieve a word from the dictionary
 	    
-			   $dictionaryEntryRetrieve = crudOperation->retrieve('word');
+			   $data = $dictionaryManager->retrieve('word');
 
  - Retrieve the whole dictionary
 	    
-			   $dictionaryRetrieveAll = crudOperation->retrieveAll();			   
+			   $data = $dictionaryManager->retrieveAll();			   
 
  - Update a word, its meaning and its sample sentence
 		
-			 $dictionaryEntryUpdate = crudOperation->update('word' newDescription', 'newSampleSentence');
+			 $data = $dictionaryManager->update('word', newDescription', 'newSampleSentence');
 
  - Delete a word in the urban dictionary
 
-			 $dictionaryEntryDelete = crudOperation->delete('word');
+			 $dictionaryManager->delete('word'); // This returns true
 
  - Rank words in a sentence
 	 - create a wordOccurence instance
 		
 			$wordOccurence = new RankWord;
 	
-	        wordOccurence->rankWord($word));
+	        $ranking = $wordOccurence->rankWord($word));
 
 **Testing**
 -------
