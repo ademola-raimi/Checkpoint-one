@@ -84,7 +84,7 @@ The dictionary contains urban words with their meaning and usage
 
 Run the following command in the urban-dictionary directory:
 
-          ~phpunit
+          ~ phpunit
 
 
 **Change log**
