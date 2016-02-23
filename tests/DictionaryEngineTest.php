@@ -32,14 +32,14 @@ Class DictionaryEngineTest extends PHPUnit_Framework_TestCase
      */
 	public function testAdd()
 	{
-        $dictionaryEntryAdd = $this->dictionaryManager->add("Ginger", "When someone is energetic", "Prosper is a ginger developer");
-	    $this->assertEquals(true, $dictionaryEntryAdd);
+        $dictionaryManagerAdd = $this->dictionaryManager->add("Ginger", "When someone is energetic", "Prosper is a ginger developer");
+	    $this->assertEquals(true, $dictionaryManagerAdd);
 
-	    $dictionaryEntryAdd = $this->dictionaryManager->add("ginger", "When someone is energetic", "Prosper is a ginger developer");
-	    $this->assertEquals(true, $dictionaryEntryAdd);
+	    $dictionaryManagerAdd = $this->dictionaryManager->add("ginger", "When someone is energetic", "Prosper is a ginger developer");
+	    $this->assertEquals(true, $dictionaryManagerAdd);
 
-	    $dictionaryEntryAdd = $this->dictionaryManager->add("GINGER", "When someone is energetic", "Prosper is a ginger developer");
-	    $this->assertEquals(true, $dictionaryEntryAdd);
+	    $dictionaryManagerAdd = $this->dictionaryManager->add("GINGER", "When someone is energetic", "Prosper is a ginger developer");
+	    $this->assertEquals(true, $dictionaryManagerAdd);
 	}
 
 	/*
@@ -49,23 +49,23 @@ Class DictionaryEngineTest extends PHPUnit_Framework_TestCase
 	 {	
         $this->dictionaryManager->add("Ginger", "When someone is energetic", "Prosper is a ginger developer");
 
-        $dictionaryEntryRetrieve         = $this->dictionaryManager->retrieve("Ginger");
+        $dictionaryManagerRetrieve         = $this->dictionaryManager->retrieve("Ginger");
         $this->assertEquals(['Ginger'            => [ 
                                 "description"    => "When someone is energetic",
                                 "sampleSentence" => "Prosper is a ginger developer"]
-                            ], $dictionaryEntryRetrieve);
+                            ], $dictionaryManagerRetrieve);
 
-        $dictionaryEntryRetrieve         = $this->dictionaryManager->retrieve("ginger");
+        $dictionaryManagerRetrieve         = $this->dictionaryManager->retrieve("ginger");
         $this->assertEquals(['Ginger'            => [ 
                                 "description"    => "When someone is energetic",
                                 "sampleSentence" => "Prosper is a ginger developer"]
-                            ], $dictionaryEntryRetrieve);
+                            ], $dictionaryManagerRetrieve);
 
-        $dictionaryEntryRetrieve         = $this->dictionaryManager->retrieve("GINGER");
+        $dictionaryManagerRetrieve         = $this->dictionaryManager->retrieve("GINGER");
         $this->assertEquals(['Ginger'            => [ 
                                 "description"    => "When someone is energetic",
                                 "sampleSentence" => "Prosper is a ginger developer"]
-                            ], $dictionaryEntryRetrieve);
+                            ], $dictionaryManagerRetrieve);
     }
 
     public function testRetrieveAll()
@@ -81,23 +81,23 @@ Class DictionaryEngineTest extends PHPUnit_Framework_TestCase
     {
         $this->dictionaryManager->add("Ginger", "When someone is energetic", "Prosper is a ginger developer");
 
-        $dictionaryEntryUpdate      = $this->dictionaryManager->update("Ginger", "when someone is hyper-active", "Laztopaz is a ginger developer");
+        $dictionaryManagerUpdate      = $this->dictionaryManager->update("Ginger", "when someone is hyper-active", "Laztopaz is a ginger developer");
         $this->assertEquals(['Ginger'            => [
 			                    'description'    => 'when someone is hyper-active',
 							    'sampleSentence' =>   'Laztopaz is a ginger developer']
-							], $dictionaryEntryUpdate);
+							], $dictionaryManagerUpdate);
 
-        $dictionaryEntryUpdate      = $this->dictionaryManager->update("ginger", "when someone is hyper-active", "Laztopaz is a ginger developer");
+        $dictionaryManagerUpdate      = $this->dictionaryManager->update("ginger", "when someone is hyper-active", "Laztopaz is a ginger developer");
         $this->assertEquals(['Ginger'            => [
 			                    'description'    => 'when someone is hyper-active',
 							    'sampleSentence' =>   'Laztopaz is a ginger developer']
-							], $dictionaryEntryUpdate);
+							], $dictionaryManagerUpdate);
 
-        $dictionaryEntryUpdate      = $this->dictionaryManager->update("GINGER", "when someone is hyper-active", "Laztopaz is a ginger developer");
+        $dictionaryManagerUpdate      = $this->dictionaryManager->update("GINGER", "when someone is hyper-active", "Laztopaz is a ginger developer");
         $this->assertEquals(['Ginger'            => [
 			                    'description'    => 'when someone is hyper-active',
 							    'sampleSentence' =>   'Laztopaz is a ginger developer']
-							], $dictionaryEntryUpdate);
+							], $dictionaryManagerUpdate);
     }
 
     /*
