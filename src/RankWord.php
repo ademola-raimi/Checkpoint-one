@@ -11,10 +11,9 @@
  * @author: Raimi Ademola <ademola.raimi@andela.com>
  * @copyright: 2016 Andela
  */
-
 namespace Demo\UrbanDictionary;
 
-Class RankWord
+class RankWord
 {
     /**
      * @method rankWord
@@ -24,8 +23,8 @@ Class RankWord
      * individual words
      *
      * The function takes a string parameter.
-     * At first, the string is converted into 
-     * an array of words through the explode function. 
+     * At first, the string is converted into
+     * an array of words through the explode function.
      *
      * It then proceeds to reduce the words
      * using the array_count_values function
@@ -33,14 +32,15 @@ Class RankWord
      * frequency of occurrence.
      *
      * @param string $word The string to rank
+     *
      * @return array
      */
     public function rankWord($word)
     {
-        $array = explode(" ",$word);
+        $array = explode(' ', $word);
         $array = array_count_values($array);
         arsort($array);
-        
+
         return $array;
     }
 }
