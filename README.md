@@ -33,7 +33,7 @@ Classes
 
 To install this package, PHP 5.5+ and composer are required. After these requirements have been met, type the following code 
 
-        $ composer require demo/urbandictionary
+        $ composer require demola/urbandictionary
 
 **Usage**
 -----
